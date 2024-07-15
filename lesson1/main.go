@@ -25,4 +25,5 @@ func main() {
 		"Miss",
 		"Moneypenny",
 	}
+	fmt.Println(p1)
 }
