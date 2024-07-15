@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io"
 	"log"
 	"os"
@@ -11,7 +10,7 @@ import (
 func main() {
 	name := "Tedd baker"
 
-	tpl := `
+	str := `
 	<!DOCTYPE html>
 	<html lang="en">
 	<head>
@@ -31,6 +30,4 @@ func main() {
 	defer nf.Close()
 
 	io.Copy(nf, strings.NewReader(str))
-
-	fmt.Println(tpl)
 }
