@@ -8,6 +8,10 @@ type person struct {
 	lname string
 }
 
+func (p person) speak() {
+	fmt.Println(p.fname, `says "good morning, James."`)
+}
+
 func main() {
 	// x = 7
 	// fmt.Printf("%T", x)
