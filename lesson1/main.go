@@ -4,6 +4,8 @@ import "fmt"
 
 type hotdog int
 type person struct {
+	fname string
+	lname string
 }
 
 func main() {
@@ -18,4 +20,9 @@ func main() {
 		"Job":  42,
 	}
 	fmt.Println(m)
+
+	p1 := person{
+		"Miss",
+		"Moneypenny",
+	}
 }
