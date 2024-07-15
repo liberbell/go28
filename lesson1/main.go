@@ -49,6 +49,6 @@ func main() {
 		},
 		true,
 	}
-
 	sa1.speak()
+	sa1.person.speak()
 }
