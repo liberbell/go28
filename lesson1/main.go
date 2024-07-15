@@ -9,7 +9,7 @@ type person struct {
 }
 
 func (p person) speak() {
-	fmt.Println(p.fname, `says "good morning, James."`)
+	fmt.Println(p.fname, p.lname, `says "good morning, James."`)
 }
 
 func main() {
@@ -29,5 +29,6 @@ func main() {
 		"Miss",
 		"Moneypenny",
 	}
-	fmt.Println(p1)
+	// fmt.Println(p1)
+	p1.speak()
 }
