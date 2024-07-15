@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -24,8 +26,11 @@ func main() {
 
 	nf, err := os.Create("index.html")
 	if err != nil {
-		log.Fatal("error creating index.html")
+		log.Fatal("error creating index.html", err)
 	}
+	defer nf.Close()
+
+	io.Copy(nf, strings.NewReader(str))
 
 	fmt.Println(tpl)
 }
