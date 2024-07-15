@@ -7,7 +7,7 @@ func main() {
 
 	tpl := `
 	<!DOCTYPE html>
-	<html lang="en>
+	<html lang="en">
 	<head>
 	<meta charset="UTF-8">
 	<title>Hello world</title>
