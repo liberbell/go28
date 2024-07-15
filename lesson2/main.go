@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"os"
+)
 
 func main() {
 	name := "Tedd baker"
@@ -17,6 +21,11 @@ func main() {
 	</body>
 	</html>
 	`
+
+	nf, err := os.Create("index.html")
+	if err != nil {
+		log.Fatal("error creating index.html")
+	}
 
 	fmt.Println(tpl)
 }
