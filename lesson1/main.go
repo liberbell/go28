@@ -14,12 +14,20 @@ type person struct {
 	lname string
 }
 
+type human interface {
+	speak()
+}
+
 func (p person) speak() {
 	fmt.Println(p.fname, p.lname, `says "good morning, James."`)
 }
 
 func (sa secretAgent) speak() {
 	fmt.Println(sa.fname, sa.lname, `"says "Shaken, not stirred"`)
+}
+
+func saysomething(h human) {
+	h.speak()
 }
 
 func main() {
@@ -40,7 +48,7 @@ func main() {
 		"Moneypenny",
 	}
 	// fmt.Println(p1)
-	p1.speak()
+	// p1.speak()
 
 	sa1 := secretAgent{
 		person{
@@ -49,6 +57,9 @@ func main() {
 		},
 		true,
 	}
-	sa1.speak()
-	sa1.person.speak()
+	// sa1.speak()
+	// sa1.person.speak()
+
+	saysomething(p1)
+	saysomething(sa1)
 }
