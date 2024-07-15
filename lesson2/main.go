@@ -9,5 +9,9 @@ func main() {
 	<head>
 	<meta charset="UTF-8">
 	<title>Hello world</title>
+	</head>
+	<body>
+	<h1>` + name + `</h1>
+	</body>
 	`
 }
