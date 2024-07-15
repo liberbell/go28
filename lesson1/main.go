@@ -1,8 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
-type hotdog int
+type secretAgent struct {
+	person
+	licenseToKill bool
+}
+
 type person struct {
 	fname string
 	lname string
