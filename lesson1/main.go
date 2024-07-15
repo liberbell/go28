@@ -2,6 +2,10 @@ package main
 
 import "fmt"
 
+type hotdog int
+type person struct {
+}
+
 func main() {
 	// x = 7
 	// fmt.Printf("%T", x)
