@@ -14,7 +14,7 @@ func main() {
 
 	nf, err := os.Create("index.html")
 	if err != nil {
-		log.Println("error creating index.html.")
+		log.Println("error creating index.html.", err)
 	}
 	defer nf.Close()
 
