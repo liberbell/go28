@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"text/template"
@@ -13,6 +14,7 @@ func main() {
 	}
 
 	err = tpl.Execute(os.Stdout, nil)
+	name := "Tedd Baker"
 
 	str := `
 	<!DOCTYPE html>
@@ -26,4 +28,6 @@ func main() {
 	</body>
 	</html>
 	`
+
+	fmt.Println(str)
 }
