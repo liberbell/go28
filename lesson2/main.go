@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"os"
@@ -8,7 +9,9 @@ import (
 )
 
 func main() {
-	name := "Tedd baker"
+	name := os.Args[1]
+	fmt.Println(os.Args[0])
+	fmt.Println(os.Args[1])
 
 	str := `
 	<!DOCTYPE html>
