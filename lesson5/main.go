@@ -18,11 +18,11 @@ func main() {
 
 	tpl, err = tpl.ParseFiles("two.gmao", "vespa.gmao")
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalln("three", err)
 	}
 	err = tpl.ExecuteTemplate(os.Stdout, "vespa.gmao", nil)
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalln("four", err)
 	}
 	err = tpl.ExecuteTemplate(os.Stdout, "two.gmao", nil)
 	if err != nil {
