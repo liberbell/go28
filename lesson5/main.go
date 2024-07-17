@@ -9,11 +9,11 @@ import (
 func main() {
 	tpl, err := template.ParseGlob("templates/*")
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalln("one", err)
 	}
 	err = tpl.Execute(os.Stdout, nil)
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalln("two", err)
 	}
 
 	tpl, err = tpl.ParseFiles("two.gmao", "vespa.gmao")
