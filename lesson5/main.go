@@ -6,12 +6,18 @@ import (
 	"os"
 )
 
+var tpl *template.Template
+
+func init() {
+	tpl = template.Must(template.ParseFiles("templates/*"))
+}
+
 func main() {
-	tpl, err := template.ParseGlob("templates/*")
-	if err != nil {
-		log.Fatalln("one", err)
-	}
-	err = tpl.Execute(os.Stdout, nil)
+	// tpl, err := template.ParseGlob("templates/*")
+	// if err != nil {
+	// 	log.Fatalln("one", err)
+	// }
+	err := tpl.Execute(os.Stdout, nil)
 	if err != nil {
 		log.Fatalln("two", err)
 	}
