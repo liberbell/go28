@@ -16,10 +16,10 @@ func main() {
 		log.Fatalln("two", err)
 	}
 
-	tpl, err = tpl.ParseFiles("two.gmao", "vespa.gmao")
-	if err != nil {
-		log.Fatalln("three", err)
-	}
+	// tpl, err = tpl.ParseFiles("two.gmao", "vespa.gmao")
+	// if err != nil {
+	// 	log.Fatalln("three", err)
+	// }
 	err = tpl.ExecuteTemplate(os.Stdout, "vespa.gmao", nil)
 	if err != nil {
 		log.Fatalln("four", err)
