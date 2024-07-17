@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	tpl, err := template.ParseFiles("one.gmao")
+	tpl, err := template.ParseGlob("templates/*")
 	if err != nil {
 		log.Fatalln(err)
 	}
