@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"os"
 	"text/template"
 )
@@ -14,4 +15,7 @@ func init() {
 func main() {
 	sages := []string{"Gandhi", "MLK", "Budda", "Jesus", "Muhammad"}
 	err := tpl.Execute(os.Stdout, sages)
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
