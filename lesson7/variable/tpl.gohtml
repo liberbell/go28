@@ -6,8 +6,10 @@
     </head>
     <body>
         {ul}
-            {{ range $index, $element := . }}
-                {li}{{$index}} - {{$element}}{/li}
+            <!-- {{ range $index, $element := . }} -->
+              {{ range .}}
+                <!-- {li}{{$index}} - {{$element}}{/li} -->
+                 <li>{{.}}</li>
             {{ end }}
         {/ul}
     </body>
