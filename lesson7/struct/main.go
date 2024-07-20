@@ -23,7 +23,29 @@ func main() {
 		Motto: "The belief on no beliefs",
 	}
 
-	err := tpl.Execute(os.Stdout, buddha)
+	gandhi := sage{
+		Name:  "Gandhi",
+		Motto: "Be the change",
+	}
+
+	mlk := sage{
+		Name:  "MLK",
+		Motto: "Hatred never ceases with hatred but with love alone is healed",
+	}
+
+	jesus := sage{
+		Name:  "Jesus",
+		Motto: "Love all",
+	}
+
+	muhammad := sage{
+		Name:  "Muhammad",
+		Motto: "To overcome evil with good is good, to resist evil by evil is evil.",
+	}
+
+	sages := []sage{buddha, gandhi, mlk, jesus, muhammad}
+
+	err := tpl.Execute(os.Stdout, sages)
 	if err != nil {
 		log.Fatalln(err)
 	}
