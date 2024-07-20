@@ -8,6 +8,11 @@ import (
 
 var tpl *template.Template
 
+type sage struct {
+	Name  string
+	Motto string
+}
+
 func init() {
 	tpl = template.Must(template.ParseFiles("tpl.gohtml"))
 }
