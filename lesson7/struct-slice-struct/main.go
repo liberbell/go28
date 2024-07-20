@@ -13,12 +13,6 @@ type sage struct {
 	Motto string
 }
 
-type car struct {
-	Manufacturer string
-	Model        string
-	Doors        int
-}
-
 func init() {
 	tpl = template.Must(template.ParseFiles("tpl.gohtml"))
 }
