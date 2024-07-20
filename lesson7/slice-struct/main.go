@@ -19,37 +19,45 @@ type car struct {
 	Doors        int
 }
 
+type items struct {
+	Wisdom    []sage
+	Transport []car
+}
+
 func init() {
 	tpl = template.Must(template.ParseFiles("tpl.gohtml"))
 }
 
 func main() {
-	buddha := sage{
+	b := sage{
 		Name:  "Buddha",
 		Motto: "The belief of no beliefs",
 	}
 
-	gandhi := sage{
+	g := sage{
 		Name:  "Gandhi",
 		Motto: "Be the change",
 	}
 
-	mlk := sage{
+	m := sage{
 		Name:  "Martin Luther King",
 		Motto: "Hatred never ceases with hatred but with love alone is healed",
 	}
 
-	jesus := sage{
-		Name:  "Jesus",
-		Motto: "Love all",
+	f := car{
+		Manufacturer: "Ford",
+		Model:        "F150",
+		Doors:        2,
 	}
 
-	muhammad := sage{
-		Name:  "Muhammad",
-		Motto: "To overcome evil with good is good, to resist evil by evil is evil.",
+	c := car{
+		Manufacturer: "Toyota",
+		Model:        "Carolla",
+		Doors:        4,
 	}
 
-	sages := []sage{buddha, gandhi, mlk, jesus, muhammad}
+	sages := []sage{b, g, m}
+	cars := []car{f, c}
 
 	err := tpl.Execute(os.Stdout, sages)
 	if err != nil {
