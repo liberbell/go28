@@ -6,7 +6,9 @@
     </head>
     <body>
         <ul>
-            <li>{{ .Name }} - {{ .Motto }}</li>
+            {{ range .}}
+                <li>{{ .Name }} - {{ .Motto }}</li>
+            {{ end }}
         </ul>
     </body>
 </html>
