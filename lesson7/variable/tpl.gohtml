@@ -5,12 +5,12 @@
         <title>Hello world</title>
     </head>
     <body>
-        {ul}
+        <ul>
             <!-- {{ range $index, $element := . }} -->
-              {{ range .}}
+            {{ range .}}
                 <!-- {li}{{$index}} - {{$element}}{/li} -->
                  <li>{{.}}</li>
             {{ end }}
-        {/ul}
+        </ul>
     </body>
 </html>
