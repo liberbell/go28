@@ -10,6 +10,12 @@ type sage struct {
 	Motto string
 }
 
+type car struct {
+	Manufacturer string
+	Model        string
+	Doors        int
+}
+
 var fm = template.FuncMap{
 	"uc": strings.ToUpper,
 	"ft": firstThree,
