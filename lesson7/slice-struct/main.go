@@ -65,11 +65,11 @@ func main() {
 	// }
 
 	data := struct {
-		Wisdom string
-		Transport string
+		Wisdom    []sage
+		Transport []car
 	}{
 		sages,
-		cars
+		cars,
 	}
 
 	err := tpl.Execute(os.Stdout, data)
