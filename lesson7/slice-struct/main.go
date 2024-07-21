@@ -19,10 +19,10 @@ type car struct {
 	Doors        int
 }
 
-type items struct {
-	Wisdom    []sage
-	Transport []car
-}
+// type items struct {
+// 	Wisdom    []sage
+// 	Transport []car
+// }
 
 func init() {
 	tpl = template.Must(template.ParseFiles("tpl.gohtml"))
@@ -59,9 +59,17 @@ func main() {
 	sages := []sage{b, g, m}
 	cars := []car{f, c}
 
-	data := items{
-		Wisdom:    sages,
-		Transport: cars,
+	// data := items{
+	// 	Wisdom:    sages,
+	// 	Transport: cars,
+	// }
+
+	data := struct {
+		Wisdom string
+		Transport string
+	}{
+		sages,
+		cars
 	}
 
 	err := tpl.Execute(os.Stdout, data)
