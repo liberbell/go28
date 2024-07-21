@@ -2,8 +2,12 @@ package main
 
 import (
 	"html/template"
+	"log"
+	"os"
 	"strings"
 )
+
+var tpl *template.Template
 
 type sage struct {
 	Name  string
@@ -57,5 +61,21 @@ func main() {
 		Manufacturer: "Toyota",
 		Model:        "Carolla",
 		Doors:        4,
+	}
+
+	sages := []sage{b, g, m}
+	cars := []car{f, c}
+
+	data := struct {
+		Wisdom    []sage
+		Transport []car
+	}{
+		sages,
+		cars,
+	}
+
+	err := tpl.Execute(os.Stdout, "tpl.gohtml", data)
+	if err != nil {
+		log.Fatalln(err)
 	}
 }
