@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+	"os"
 	"text/template"
 	"time"
 )
@@ -13,4 +15,11 @@ func monthDayYear(t time.Time) string {
 
 var fm = template.FuncMap{
 	"fdateMDY": monthDayYear,
+}
+
+func main() {
+	err := tpl.ExecuteTemplate(os.Stdout, "tpl.gohtml", time.Now())
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
