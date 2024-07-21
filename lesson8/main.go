@@ -74,7 +74,7 @@ func main() {
 		cars,
 	}
 
-	err := tpl.Execute(os.Stdout, "tpl.gohtml", data)
+	err := tpl.ExecuteTemplate(os.Stdout, "tpl.gohtml", data)
 	if err != nil {
 		log.Fatalln(err)
 	}
