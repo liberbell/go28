@@ -5,10 +5,7 @@
         <title>Hello world</title>
     </head>
     <body>
-        <ul>
-            {{ range .}}
-                <li>{{ .Name }} - {{ .Motto }}</li>
-            {{ end }}
-        </ul>
+        Without data formatting: {{ . }}
+        With data formatting: {{ fdateMDY .}} 
     </body>
 </html>
