@@ -6,6 +6,12 @@
     </head>
     <body>
         <ul>
+            {{ range .Wisdom }}
+                <li>{{ .Name }} - {{ .Motto }}</li>
+            {{ end }}
+        </ul>
+
+        <ul>
             {{ range .Transport }}
                 <li>{{ .Manufacturer }} - {{ .Model }} - {{ .Doors }}</li>
             {{ end }}
