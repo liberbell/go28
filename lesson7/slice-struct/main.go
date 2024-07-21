@@ -59,7 +59,12 @@ func main() {
 	sages := []sage{b, g, m}
 	cars := []car{f, c}
 
-	err := tpl.Execute(os.Stdout, sages)
+	data := items{
+		Wisdom:    sages,
+		Transport: cars,
+	}
+
+	err := tpl.Execute(os.Stdout, data)
 	if err != nil {
 		log.Fatalln(err)
 	}
