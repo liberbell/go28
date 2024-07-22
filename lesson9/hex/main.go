@@ -18,3 +18,7 @@ func doubule(x int) int {
 func square(x int) float64 {
 	return math.Pow(float64(x), 2)
 }
+
+func sqRoot(x float64) float64 {
+	return math.Sqrt(x)
+}
