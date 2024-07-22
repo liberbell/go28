@@ -1,6 +1,10 @@
 package main
 
-import "text/template"
+import (
+	"log"
+	"os"
+	"text/template"
+)
 
 var tpl *template.Template
 
@@ -11,4 +15,8 @@ func init() {
 func main() {
 	xs := []string{"zero", "one", "two", "three", "four", "five"}
 
+	err := tpl.Execute(os.Stdout, xs)
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
