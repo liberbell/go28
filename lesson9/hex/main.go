@@ -1,7 +1,9 @@
 package main
 
 import (
+	"log"
 	"math"
+	"os"
 	"text/template"
 )
 
@@ -27,4 +29,11 @@ var fm = template.FuncMap{
 	"fdbl":  double,
 	"fsq":   square,
 	"fsqrt": sqRoot,
+}
+
+func main() {
+	err := tpl.ExecuteTemplate(os.Stdout, "tpl.gohtml", 3)
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
