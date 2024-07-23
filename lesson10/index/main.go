@@ -16,14 +16,14 @@ func main() {
 	xs := []string{"zero", "one", "two", "three", "four", "five"}
 
 	data := struct {
-		Words: []string
-		Lname: string
+		Words []string
+		Lname string
 	}{
 		xs,
 		"Mcleod",
 	}
 
-	err := tpl.Execute(os.Stdout, xs)
+	err := tpl.Execute(os.Stdout, data)
 	if err != nil {
 		log.Fatalln(err)
 	}
