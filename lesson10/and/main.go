@@ -37,7 +37,9 @@ func main() {
 		Admin: true,
 	}
 
-	err := tpl.Execute(os.Stdout, data)
+	users := []user{u1, u2, u3}
+
+	err := tpl.Execute(os.Stdout, users)
 	if err != nil {
 		log.Fatalln(err)
 	}
