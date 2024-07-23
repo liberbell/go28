@@ -22,6 +22,12 @@ func main() {
 	u1 := user{
 		Name:  "Buddha",
 		Motto: "The belief of no beliefs",
+		Admin: false,
+	}
+
+	u2 := user{
+		Name:  "Gandhi",
+		Motto: "Be the change",
 	}
 
 	err := tpl.Execute(os.Stdout, data)
