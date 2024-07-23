@@ -9,7 +9,9 @@ import (
 var tpl *template.Template
 
 type user struct {
-	Name string
+	Name  string
+	Motto string
+	Admin bool
 }
 
 func init() {
