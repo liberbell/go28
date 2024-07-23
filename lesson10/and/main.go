@@ -28,6 +28,13 @@ func main() {
 	u2 := user{
 		Name:  "Gandhi",
 		Motto: "Be the change",
+		Admin: true,
+	}
+
+	u3 := user{
+		Name:  "",
+		Motto: "Nobody",
+		Admin: true,
 	}
 
 	err := tpl.Execute(os.Stdout, data)
