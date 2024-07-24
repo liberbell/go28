@@ -9,21 +9,11 @@ import (
 var tpl *template.Template
 
 func init() {
-	tpl = template.Must(template.ParseFiles("tpl.gohtml"))
+	tpl = template.Must(template.ParseGlob("*.gohtml"))
 }
 
 func main() {
-	xs := []string{"zero", "one", "two", "three", "four", "five"}
-
-	data := struct {
-		Words []string
-		Lname string
-	}{
-		xs,
-		"Mcleod",
-	}
-
-	err := tpl.Execute(os.Stdout, data)
+	err := tpl.ExecuteTemplate(os.Stdout, "index.gohtml", 42)
 	if err != nil {
 		log.Fatalln(err)
 	}
