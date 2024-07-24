@@ -21,7 +21,7 @@ func main() {
 		9,
 	}
 
-	err := tpl.Execute(os.Stdout, useg1rs)
+	err := tpl.Execute(os.Stdout, g1)
 	if err != nil {
 		log.Fatalln(err)
 	}
