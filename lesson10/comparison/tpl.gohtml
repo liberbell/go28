@@ -12,5 +12,9 @@
         {{if lt .Score1 .Score2}}
         SCORE1 < SCORE2
         {{end}}
+
+        {{if eq .Score1 .Score2}}
+        SCORE1 = SCORE2
+        {{end}}
     </body>
 </html>
