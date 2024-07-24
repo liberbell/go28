@@ -16,5 +16,9 @@
         {{if eq .Score1 .Score2}}
         SCORE1 = SCORE2
         {{end}}
+
+        {{if lt .Score 10}}
+        Last one: SCORE1 < 10
+        {{end}}
     </body>
 </html>
