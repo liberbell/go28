@@ -8,7 +8,12 @@
     <body>
         {{template "svgs"}}
         {{template "header"}}
-        <h1>The meaning of life: {{.}}</h1>
-        <p>{{template "polarbear" .}}</p>
+        <div>
+            <main>
+                <svg class="icon icon-big-in">
+                    <use xlink:href="#index"></use>
+                </svg>
+            </main>
+        </div>
     </body>
 </html>
