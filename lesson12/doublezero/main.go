@@ -15,7 +15,7 @@ var tpl *template.Template
 
 type doubleZero struct {
 	person
-	LicenceToKill bool
+	LicenseToKill bool
 }
 
 func init() {
