@@ -33,7 +33,8 @@ func init() {
 func main() {
 	y := year{
 		Fall: semester{
-			Term: []course{
+			Term: "Fall",
+			Corses: []course{
 				course{"CSCI-40", "Introduction to Programming in Go", "4"},
 				course{"CSCI-130", "Introduction to Web Programming with Go", "4"},
 				course{"CSCI-140", "Mobile Apps Using Go", "4"},
@@ -49,7 +50,7 @@ func main() {
 		},
 	}
 
-	err := tpl.Execute(os.Stdout, p1)
+	err := tpl.Execute(os.Stdout, y)
 	if err != nil {
 		log.Fatalln(err)
 	}
