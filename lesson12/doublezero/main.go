@@ -28,7 +28,7 @@ func main() {
 			Name: "Ian Fleming",
 			Age:  56,
 		},
-		false,
+		true,
 	}
 
 	err := tpl.Execute(os.Stdout, p1)
