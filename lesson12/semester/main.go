@@ -12,11 +12,11 @@ type person struct {
 }
 
 type course struct {
-	Number, Name, Units, string
+	Number, Name, Units string
 }
 
 type semester struct {
-	Term string
+	Term    string
 	Courses []course
 }
 
