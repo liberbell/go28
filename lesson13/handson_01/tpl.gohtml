@@ -12,6 +12,9 @@
             <h3>{{.Number}} - {{.Name}} - {{.Units}}</h3>
         {{end}}
         <h1>{{.Spring.Term}} - {{.AcaYear}}</h1>
+        {{range .Spring.Courses}}
+            <h3>{{.Number}} - {{.Name}} - {{.Units}}</h3>
+        {{end}}
     {{end}}
 
 </body>
