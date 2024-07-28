@@ -8,6 +8,8 @@
 
     {{range .}}
         <h1>{{.Fall.Term}} - {{.AcaYear}}</h1>
+        {{range .Fall.Courses}}
+            <h1>{{.course}}</h1>
         <h1>{{.Spring.Term}} - {{.AcaYear}}</h1>
     {{end}}
 
