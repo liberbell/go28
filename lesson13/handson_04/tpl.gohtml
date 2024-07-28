@@ -6,7 +6,8 @@
 </head>
 <body>
 
-    {{range .Region}}
+    {{.Region}}
+    {{range .Hotels}}
         <h1>{{.Region}}</h1>
         <h2>{{.hotel.Name}}</h2>
         <h2>{{.Address}} - {{.Zip}} - {{.City}}</h2>
