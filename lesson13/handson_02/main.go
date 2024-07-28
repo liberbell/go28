@@ -2,11 +2,11 @@ package main
 
 import "html/template"
 
-type hotels struct {
-	Name, Address, City, Zipcode, Region string
+type hotel struct {
+	Name, Address, City, Zip, Region string
 }
 
-type hotel []hotels
+type hotels []hotel
 
 var tpl *template.Template
 
