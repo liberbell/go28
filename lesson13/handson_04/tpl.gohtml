@@ -6,11 +6,12 @@
 </head>
 <body>
 
-    {{.Region}}
-    {{range .Hotels}}
+    {{range .}}
         <h1>{{.Region}}</h1>
-        <h2>{{.Name}}</h2>
-        <h2>{{.Address}} - {{.Zip}} - {{.City}}</h2>
+        {{range .Hotels}}
+            <h2>{{.Name}}</h2>
+            <h2>{{.Address}} - {{.Zip}} - {{.City}}</h2>
+        {{end}}
     {{end}}
 
 </body>
