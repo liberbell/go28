@@ -1,6 +1,10 @@
 package main
 
-import "html/template"
+import (
+	"html/template"
+	"log"
+	"os"
+)
 
 type hotel struct {
 	Name, Address, City, Zip, Region string
@@ -30,5 +34,10 @@ func main() {
 			Zip:     "95612",
 			Region:  "southern",
 		},
+	}
+
+	err := tpl.Execute(os.Stdout, h)
+	if err != nil {
+		log.Fatalln(err)
 	}
 }
