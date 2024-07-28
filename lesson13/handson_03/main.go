@@ -38,21 +38,21 @@ func main() {
 				Zip:     "95612",
 			},
 		},
-		Region: "nouthern",
-		Hotels: []hotel{
-			hotel{
-				Name:    "Hotel alaska",
-				Address: "someweare cold",
-				City:    "Alaska",
-				Zip:     "99999",
-			},
-			hotel{
-				Name:    "C",
-				Address: "10",
-				City:    "A",
-				Zip:     "99999",
-			},
-		}
+		// Region: "nouthern",
+		// Hotels: []hotel{
+		// 	hotel{
+		// 		Name:    "Hotel alaska",
+		// 		Address: "someweare cold",
+		// 		City:    "Alaska",
+		// 		Zip:     "99999",
+		// 	},
+		// 	hotel{
+		// 		Name:    "C",
+		// 		Address: "10",
+		// 		City:    "A",
+		// 		Zip:     "99999",
+		// 	},
+		// },
 	}
 
 	err := tpl.Execute(os.Stdout, h)
