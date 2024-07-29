@@ -6,17 +6,17 @@ import (
 	"os"
 )
 
-type menu struct {
-	Name, Description string
-	Price             string
+type item struct {
+	Name, Description, Meal string
+	Price                   string
 }
 
-type time struct {
-	Time  string
-	Times []time
-}
+// type time struct {
+// 	Time  string
+// 	Times []time
+// }
 
-type Times []time
+type items []item
 
 var tpl *template.Template
 
