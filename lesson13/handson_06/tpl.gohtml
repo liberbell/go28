@@ -8,9 +8,8 @@
 
     {{range .}}
         {{.Meal}}
-        {{range .Item}}
-        <!-- <h2>{{.Name}}</h2>
-        <h2>{{.Description}} - {{.Meal}} - ${{.Price}}</h2> -->
+            {{range .Item}}
+            {{.Name}} {{.Description}} - ${{.Price}}
         {{end}}
     {{end}}
 
