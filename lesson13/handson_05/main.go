@@ -8,7 +8,7 @@ import (
 
 type item struct {
 	Name, Description, Meal string
-	Price                   string
+	Price                   float64
 }
 
 // type time struct {
@@ -25,40 +25,18 @@ func init() {
 }
 
 func main() {
-	h := Times{
-		time{
-			Time: "Breakfast",
-			Times: []hotel{
-				hotel{
-					Name:    "Hotel California",
-					Address: "42 Sunset Boulevard",
-					City:    "Los Angeles",
-					Zip:     "95612",
-				},
-				hotel{
-					Name:    "H",
-					Address: "4",
-					City:    "L",
-					Zip:     "95612",
-				},
-			},
+	h := items{
+		item{
+			Name:        "Bread",
+			Description: "Hard bread",
+			Meal:        "Breakfast",
+			Price:       5.99,
 		},
-		region{
-			Region: "Nouthern",
-			Hotels: []hotel{
-				hotel{
-					Name:    "Hotel alaska",
-					Address: "someweare cold",
-					City:    "Alaska",
-					Zip:     "99999",
-				},
-				hotel{
-					Name:    "C",
-					Address: "10",
-					City:    "A",
-					Zip:     "99999",
-				},
-			},
+		item{
+			Name:        "Salad",
+			Description: "Normal salad",
+			Meal:        "Breakfast",
+			Price:       3.99,
 		},
 	}
 
