@@ -40,36 +40,36 @@ func main() {
 					Price:       3.99,
 				},
 			},
-		}
-		item{
-			Name:        "Bread",
-			Description: "Hard bread",
-			Meal:        "Breakfast",
-			Price:       5.99,
 		},
-		item{
-			Name:        "Salad",
-			Description: "Normal salad",
-			Meal:        "Breakfast",
-			Price:       3.99,
+		meal{
+			Meal: "Lunch",
+			Item: []item{
+				item{
+					Name:        "Hamburgur",
+					Description: "Cheese",
+					Price:       23.99,
+				},
+				item{
+					Name:        "Orange juice",
+					Description: "Fresh juice",
+					Price:       8.99,
+				},
+			},
 		},
-		item{
-			Name:        "Hamburgur",
-			Description: "Cheese",
-			Meal:        "Lunch",
-			Price:       23.99,
-		},
-		item{
-			Name:        "Curry",
-			Description: "Spicy curry",
-			Meal:        "Dinner",
-			Price:       50.99,
-		},
-		item{
-			Name:        "Beer",
-			Description: "Dirty beer",
-			Meal:        "Dinner",
-			Price:       10.99,
+		meal{
+			Meal: "Dinner",
+			Item: []item{
+				item{
+					Name:        "Curry",
+					Description: "Spicy curry",
+					Price:       50.99,
+				},
+				item{
+					Name:        "Beer",
+					Description: "Dirty beer",
+					Price:       10.99,
+				},
+			},
 		},
 	}
 
