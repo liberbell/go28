@@ -11,11 +11,6 @@ type item struct {
 	Price                   float64
 }
 
-// type time struct {
-// 	Time  string
-// 	Times []time
-// }
-
 type items []item
 
 var tpl *template.Template
@@ -37,6 +32,24 @@ func main() {
 			Description: "Normal salad",
 			Meal:        "Breakfast",
 			Price:       3.99,
+		},
+		item{
+			Name:        "Hamburgur",
+			Description: "Cheese",
+			Meal:        "Lunch",
+			Price:       23.99,
+		},
+		item{
+			Name:        "Curry",
+			Description: "Spicy curry",
+			Meal:        "Dinner",
+			Price:       50.99,
+		},
+		item{
+			Name:        "Beer",
+			Description: "Dirty beer",
+			Meal:        "Dinner",
+			Price:       10.99,
 		},
 	}
 
