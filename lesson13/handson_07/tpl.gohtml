@@ -8,8 +8,8 @@
 
     {{range .}}
         {{.Name}}
-        {{range .meal}}
-            {{.Name}}
+        {{range .Menu}}
+            {{.Name}} - {{.Description}} - ${{.Price}}
         {{end}}
     {{end}}
 
