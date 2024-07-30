@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/csv"
 	"log"
 	"net/http"
 	"os"
@@ -26,4 +27,12 @@ func pts(filepath string) []Record {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	defer src.Close()
+
+	rdr := csv.NewReader(src)
+	rows, err := rdr.ReadAll()
+	if err != nil {
+		log.Fatalln(err)
+	}
+
 }
