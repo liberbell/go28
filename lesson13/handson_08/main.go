@@ -13,5 +13,8 @@ type Record struct {
 func main() {
 	http.HandleFunc("/", foo)
 	http.ListenAndServe(":8080", nil)
+}
 
+func foo(res http.ResponseWriter, req *http.Request) {
+	records := pts("table.csv")
 }
