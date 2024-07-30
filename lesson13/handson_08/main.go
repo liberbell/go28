@@ -1,7 +1,7 @@
 package main
 
 import (
-	"os"
+	"net/http"
 	"time"
 )
 
@@ -11,6 +11,7 @@ type Record struct {
 }
 
 func main() {
-	table_data, err := os.Open("table.csv", "r")
+	http.HandleFunc("/", foo)
+	http.ListenAndServe(":8080", nil)
 
 }
