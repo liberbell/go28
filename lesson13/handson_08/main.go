@@ -49,5 +49,6 @@ func pts(filepath string) []Record {
 			Open: open,
 		})
 	}
+	return records
 
 }
