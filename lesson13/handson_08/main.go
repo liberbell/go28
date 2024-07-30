@@ -1,7 +1,9 @@
 package main
 
 import (
+	"log"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -17,4 +19,11 @@ func main() {
 
 func foo(res http.ResponseWriter, req *http.Request) {
 	records := pts("table.csv")
+}
+
+func pts(filepath string) []Record {
+	src, err := os.Open("table.csv")
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
