@@ -134,8 +134,6 @@ func main() {
 			},
 		},
 	}
-		
-	}
 
 	err := tpl.Execute(os.Stdout, h)
 	if err != nil {
