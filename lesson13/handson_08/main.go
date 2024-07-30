@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 )
 
@@ -33,6 +34,20 @@ func pts(filepath string) []Record {
 	rows, err := rdr.ReadAll()
 	if err != nil {
 		log.Fatalln(err)
+	}
+
+	records := make([]Record, 0, len(rows))
+	for i, row := range rows {
+		if i == 0 {
+			continue
+		}
+		date, _ := time.Parse("2006-01-02", row[0])
+		open, _ := strconv.ParseFloat(row[1], 64)
+
+		records = append(records, Record{
+			Date: date,
+			Open: open,
+		})
 	}
 
 }
