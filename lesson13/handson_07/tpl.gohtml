@@ -9,7 +9,10 @@
     {{range .}}
         {{.Name}}
         {{range .Menu}}
-            {{.Name}} - {{.Description}} - ${{.Price}}
+            {{.Meal}}
+            {{range .Item}}
+                {{.Name}} - {{.Description}} - ${{.Price}}
+            {{end}}
         {{end}}
     {{end}}
 
