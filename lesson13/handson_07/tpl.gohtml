@@ -7,10 +7,7 @@
 <body>
 
     {{range .}}
-        {{.Meal}}
-            {{range .Item}}
-            {{.Name}}, {{.Description}} - ${{.Price}}
-        {{end}}
+        {{.Name}}
     {{end}}
 
 </body>
