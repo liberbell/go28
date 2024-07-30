@@ -8,6 +8,9 @@
 
     {{range .}}
         {{.Name}}
+        {{range .meal}}
+            {{.Name}}
+        {{end}}
     {{end}}
 
 </body>
