@@ -1,6 +1,10 @@
 package main
 
-import "html/template"
+import (
+	"html/template"
+	"log"
+	"os"
+)
 
 type Page struct {
 	Title   string
@@ -15,9 +19,13 @@ func init() {
 }
 
 func main() {
-	home = Page{
+	home := Page{
 		Title:   "Nothin escape",
 		Heading: "Nothing escaped with text/template",
 		Input:   `<script>alert("YoW");</script>`,
+	}
+	err := tpl.ExecuteTemplate(os.Stdout, "tpl.gohtml", home)
+	if err != nil {
+		log.Fatalln(err)
 	}
 }
