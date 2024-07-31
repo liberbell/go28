@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/csv"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
@@ -21,6 +22,16 @@ func main() {
 
 func foo(res http.ResponseWriter, req *http.Request) {
 	records := pts("table.csv")
+
+	tpl, err := template.ParseFiles("hw.gohtml")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	err = tpl.Execute(res, records)
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
 
 func pts(filepath string) []Record {
