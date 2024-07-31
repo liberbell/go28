@@ -6,8 +6,10 @@
 </head>
 <body>
     <h1>Stock price template</h1>
-    {{range .}}
-        <li>{{.Data}} - {{.Open}}</li>
-    {{end}}
+    <ul>
+        {{range .}}
+            <li>{{.Date}} - {{.Open}}</li>
+        {{end}}
+    </ul>
 </body>
 </html>
