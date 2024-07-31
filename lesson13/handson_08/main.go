@@ -35,7 +35,7 @@ func foo(res http.ResponseWriter, req *http.Request) {
 }
 
 func pts(filepath string) []Record {
-	src, err := os.Open("table.csv")
+	src, err := os.Open(filepath)
 	if err != nil {
 		log.Fatalln(err)
 	}
