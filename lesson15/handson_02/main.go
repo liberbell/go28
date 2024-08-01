@@ -3,8 +3,16 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"net"
 )
+
+func main() {
+	li, err := net.Listen("tcp", "localhost:8080")
+	if err != nil {
+		log.Panic(err)
+	}
+}
 
 func handle(conn net.Conn) {
 	scanner := bufio.NewScanner(conn)
@@ -12,5 +20,6 @@ func handle(conn net.Conn) {
 		ln := scanner.Text()
 		fmt.Println(ln)
 	}
+	defer conn.Close()
 
 }
