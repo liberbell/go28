@@ -12,6 +12,15 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
+	defer li.Close()
+
+	for {
+		conn, err := li.Accept()
+		if err != nil {
+			log.Println(err)
+		}
+		go handle(conn)
+	}
 }
 
 func handle(conn net.Conn) {
