@@ -31,4 +31,6 @@ func handle(conn net.Conn) {
 	}
 	defer conn.Close()
 
+	fmt.Println("Code get here")
+
 }
