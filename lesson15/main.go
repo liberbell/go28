@@ -20,8 +20,8 @@ func main() {
 			log.Println(err)
 		}
 		io.WriteString(conn, "\nHello, from tcp servers")
-		fmt.Println(conn, "How is your day")
-		fmt.Println(conn, "%v", "Well, I hope!")
+		fmt.Fprintln(conn, "How is your day")
+		fmt.Fprintf(conn, "%v", "Well, I hope!")
 
 		conn.Close()
 	}
