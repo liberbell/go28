@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"net"
 	"strings"
@@ -28,6 +29,9 @@ func handle(conn net.Conn) {
 	for scnner.Scan() {
 		ln := strings.ToLower(scnner.Text())
 		bs := []byte(ln)
+		r := rot13(bs)
+
+		fmt.Fprintf(conn, "%s - %s\n\n", ln, r)
 	}
 }
 
