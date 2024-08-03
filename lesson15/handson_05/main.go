@@ -40,4 +40,5 @@ func rot13(bs []byte) []byte {
 			r13[i] = v - 13
 		}
 	}
+	return r13
 }
