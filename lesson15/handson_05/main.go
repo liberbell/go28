@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"log"
 	"net"
 )
@@ -22,5 +23,5 @@ func main() {
 }
 
 func handle(conn net.Conn) {
-
+	scnner := bufio.NewScanner(conn)
 }
