@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"log"
 	"net"
+	"strings"
 )
 
 func main() {
@@ -24,4 +25,12 @@ func main() {
 
 func handle(conn net.Conn) {
 	scnner := bufio.NewScanner(conn)
+	for scnner.Scan() {
+		ln := strings.ToLower(scnner.Text())
+		bs := []byte(ln)
+	}
+}
+
+func rot13(bs []byte) []byte {
+	var r13 = make([]byte, len(bs))
 }
