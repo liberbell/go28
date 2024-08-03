@@ -20,7 +20,7 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-
+		go handle(conn)
 	}
 }
 
