@@ -23,6 +23,11 @@ func request(conn net.Conn) {
 		fmt.Println(ln)
 		if i == 0 {
 			m := strings.Fields(ln)[0]
+			fmt.Println("***Method", m)
 		}
+		if ln == "" {
+			break
+		}
+		i++
 	}
 }
