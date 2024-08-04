@@ -23,5 +23,10 @@ func request(conn net.Conn) {
 		if ln == "" {
 			break
 		}
+		i++
 	}
+}
+
+func mux(conn net.Conn, ln string) {
+
 }
