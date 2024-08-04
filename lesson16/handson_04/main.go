@@ -17,6 +17,11 @@ func request(conn net.Conn) {
 	for scanner.Scan() {
 		ln := scanner.Text()
 		fmt.Println(ln)
-
+		if i == 0 {
+			mux(conn, ln)
+		}
+		if ln == "" {
+			break
+		}
 	}
 }
