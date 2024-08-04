@@ -39,4 +39,5 @@ func respond(conn net.Conn) {
 	fmt.Fprintf(conn, "content-length: %d\r\n", len(body))
 	fmt.Fprint(conn, "content-type: text/hmtl\r\n")
 	fmt.Fprint(conn, "\r\n")
+	fmt.Fprint(conn, body)
 }
