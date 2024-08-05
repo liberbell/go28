@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"net"
+	"strings"
 )
 
 func handle(conn net.Conn) {
@@ -28,5 +29,12 @@ func request(conn net.Conn) {
 }
 
 func mux(conn net.Conn, ln string) {
+	m := strings.Fields(ln)[0]
+	u := strings.Fields(ln)[1]
+	fmt.Println("***METHOD", m)
+	fmt.Println("***URI", u)
 
+	if m == "GET" && u == "/" {
+		index(conn)
+	}
 }
