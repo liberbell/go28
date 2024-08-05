@@ -7,6 +7,10 @@ import (
 	"strings"
 )
 
+func main() {
+
+}
+
 func handle(conn net.Conn) {
 	defer conn.Close()
 	request(conn)
