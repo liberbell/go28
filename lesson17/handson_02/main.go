@@ -19,7 +19,7 @@ func (m hotdog) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func init() {
-	tpl := template.Must(template.ParseFiles("index.gohtml"))
+	tpl = template.Must(template.ParseFiles("index.gohtml"))
 }
 
 func main() {
