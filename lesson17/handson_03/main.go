@@ -19,4 +19,10 @@ func (m hotdog) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	tpl.ExecuteTemplate(w, "index.gohtml", r.Form)
+}
+
+func main() {
+	var d hotdog
+	http.ListenAndServe(":8080", d)
 }
