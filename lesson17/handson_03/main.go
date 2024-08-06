@@ -2,6 +2,7 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -14,5 +15,8 @@ func init() {
 }
 
 func (m hotdog) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-
+	err := r.ParseForm()
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
