@@ -31,6 +31,7 @@ func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		req.ContentLength,
 	}
 	tpl.ExecuteTemplate(w, "index.gohtml", data)
+	print(data.ContentLength)
 }
 
 var tpl *template.Template
