@@ -9,8 +9,10 @@
 <header>
 {{if .Method}}<p>The request method: {{.Method}}</p>{{end}}
 {{if .Host}}<p>The request host: {{.Host}}</p>{{end}}
-{{if .ContentLength}}<p>The request ContentLength: {{.ContentLength}}</p>{{end}}
+<p>The request ContentLength: {{.ContentLength}}</p>
+<!-- {{if .ContentLength}}<p>The request ContentLength: {{.ContentLength}}</p>{{end}} -->
 {{if .URL}}<p>The request URL:</p>
+
     <ul>
         <li>Scheme: {{.URL.Scheme}}</li>
         <li>Opaque: {{.URL.Opaque}}</li>
