@@ -9,26 +9,26 @@ import (
 
 type hotdog int
 
-var tpl *template.Template
-
-func init() {
-	tpl = template.Must(template.ParseFiles("index.gohtml"))
-}
-
-func (m hotdog) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	err := r.ParseForm()
+func (m hotdog) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+	err := req.ParseForm()
 	if err != nil {
 		log.Fatalln(err)
 	}
 
 	data := struct {
-		Method     string
-		Submission url.Values
+		Method      string
+		Submissions url.Values
 	}{
-		r.Method,
-		r.Form,
+		req.Method,
+		req.Form,
 	}
 	tpl.ExecuteTemplate(w, "index.gohtml", data)
+}
+
+var tpl *template.Template
+
+func init() {
+	tpl = template.Must(template.ParseFiles("index.gohtml"))
 }
 
 func main() {
