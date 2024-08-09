@@ -5,24 +5,17 @@ import (
 	"net/http"
 )
 
-type hotdog int
-
-func (m hotdog) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func d(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, "doggy doggy doggy")
 }
 
-type hotcat int
-
-func (m hotcat) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func c(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, "kitty kitty kitty")
 }
 
 func main() {
-	var d hotdog
-	var c hotcat
-
 	mux := http.NewServeMux()
-	mux.Handle("/dog/", d)
-	mux.Handle("/cat", c)
+	mux.HandleFunc("/dog/", d)
+	mux.HandleFunc("/cat", c)
 	http.ListenAndServe(":8080", mux)
 }
