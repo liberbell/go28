@@ -8,6 +8,10 @@ import (
 
 var tpl *template.Template
 
+func init() {
+	tpl = template.Must(template.ParseGlob("template/*"))
+}
+
 func d(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, "doggy doggy doggy")
 }
