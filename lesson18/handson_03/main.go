@@ -2,6 +2,7 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
@@ -18,13 +19,14 @@ func main() {
 	mux.GET("/", index)
 }
 
-func index(w http.ResponseWriter, r *http.Request)  {
+func index(w http.ResponseWriter, r *http.Request) {
 	err := tpl.ExecuteTemplate(w, "index.gohtml", nil)
 	Handleerr
 }
 
-func HandleError(w http.ResponseWriter, err error)  {
+func HandleError(w http.ResponseWriter, err error) {
 	if err != nil {
-		http.Error(w err.Error(), )
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Fatalln(err)
 	}
 }
