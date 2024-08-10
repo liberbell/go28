@@ -19,9 +19,9 @@ func main() {
 	mux.GET("/", index)
 }
 
-func index(w http.ResponseWriter, r *http.Request) {
+func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	err := tpl.ExecuteTemplate(w, "index.gohtml", nil)
-	Handleerr
+	HandleError(w, err)
 }
 
 func HandleError(w http.ResponseWriter, err error) {
