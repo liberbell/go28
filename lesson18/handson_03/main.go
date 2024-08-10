@@ -34,6 +34,16 @@ func contact(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	HandleError(w, err)
 }
 
+func apply(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	err := tpl.ExecuteTemplate(w, "apply.gohtml", nil)
+	HandleError(w, err)
+}
+
+func applyProcess(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	err := tpl.ExecuteTemplate(w, "applyprocess.gohtml", nil)
+	HandleError(w, err)
+}
+
 func HandleError(w http.ResponseWriter, err error) {
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
