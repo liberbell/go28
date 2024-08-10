@@ -17,6 +17,9 @@ func init() {
 func main() {
 	mux := httprouter.New()
 	mux.GET("/", index)
+	mux.GET("/about", about)
+	mux.GET("/contact", contact)
+	mux.GET("/apply", apply)
 }
 
 func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
