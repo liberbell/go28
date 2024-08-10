@@ -20,6 +20,8 @@ func main() {
 	mux.GET("/about", about)
 	mux.GET("/contact", contact)
 	mux.GET("/apply", apply)
+	mux.GET("/applyprocess", applyProcess)
+	http.ListenAndServe(":8080", mux)
 }
 
 func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
