@@ -24,6 +24,16 @@ func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	HandleError(w, err)
 }
 
+func about(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	err := tpl.ExecuteTemplate(w, "about.gohtml", nil)
+	HandleError(w, err)
+}
+
+func contact(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	err := tpl.ExecuteTemplate(w, "contact.gohtml", nil)
+	HandleError(w, err)
+}
+
 func HandleError(w http.ResponseWriter, err error) {
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
