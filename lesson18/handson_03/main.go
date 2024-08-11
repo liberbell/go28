@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -22,9 +23,13 @@ func main() {
 	mux.GET("/apply", apply)
 	mux.POST("/applyprocess", applyProcess)
 	mux.GET("/user/:name", user)
-	mux.GET("/blog/:category/:article", blog)
-	mux.POST("/blog/:category/:article", blog)
+	mux.GET("/blog/:category/:article", blogRead)
+	mux.POST("/blog/:category/:article", blogWrite)
 	http.ListenAndServe(":8080", mux)
+}
+
+func user(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {
+	fmt.Fprintf(w, "USER, %s!\n", ps.ByName("name"))
 }
 
 func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
