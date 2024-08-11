@@ -21,7 +21,7 @@ func main() {
 	mux.GET("/about", about)
 	mux.GET("/contact", contact)
 	mux.GET("/apply", apply)
-	mux.POST("/applyprocess", applyProcess)
+	mux.POST("/apply", applyProcess)
 	mux.GET("/user/:name", user)
 	mux.GET("/blog/:category/:article", blogRead)
 	mux.POST("/blog/:category/:article", blogWrite)
