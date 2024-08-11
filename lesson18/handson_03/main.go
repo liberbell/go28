@@ -20,9 +20,10 @@ func main() {
 	mux.GET("/about", about)
 	mux.GET("/contact", contact)
 	mux.GET("/apply", apply)
-	mux.GET("/applyprocess", applyProcess)
+	mux.POST("/applyprocess", applyProcess)
 	mux.GET("/user/:name", user)
 	mux.GET("/blog/:category/:article", blog)
+	mux.POST("/blog/:category/:article", blog)
 	http.ListenAndServe(":8080", mux)
 }
 
