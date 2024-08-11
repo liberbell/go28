@@ -20,3 +20,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 func dog(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, "doggy doggy doggy")
 }
+
+func cat(w http.ResponseWriter, r *http.Request) {
+	io.WriteString(w, "kitty kitty kitty")
+}
