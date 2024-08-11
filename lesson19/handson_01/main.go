@@ -7,8 +7,8 @@ import (
 
 func main() {
 	http.HandleFunc("/", index)
-	http.HandleFunc("/dog", dog)
-	http.HandleFunc("/cat", cat)
+	http.HandleFunc("/dog/", dog)
+	http.HandleFunc("/cat/", cat)
 
 	http.ListenAndServe(":8080", nil)
 }
