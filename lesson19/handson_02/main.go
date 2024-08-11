@@ -32,4 +32,9 @@ func data(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatalln("parse error", err)
 	}
+
+	err = tpl.ExecuteTemplate(w, "data.gohtml", data)
+	if err != nil {
+		log.Fatalln("execute template error", err)
+	}
 }
