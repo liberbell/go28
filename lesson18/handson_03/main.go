@@ -28,8 +28,18 @@ func main() {
 	http.ListenAndServe(":8080", mux)
 }
 
-func user(w http.ResponseWriter, req *http.Request, ps httprouter.Params) {
+func user(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	fmt.Fprintf(w, "USER, %s!\n", ps.ByName("name"))
+}
+
+func blogRead(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	fmt.Fprintf(w, "READ CATEGORY, %s!\n", ps.ByName("category"))
+	fmt.Fprintf(w, "READ ARTICLE, %s!\n", ps.ByName("article"))
+}
+
+func blogWrite(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	fmt.Fprintf(w, "WRITE CATEGORY, %s!\n", ps.ByName("category"))
+	fmt.Fprintf(w, "WRITE ARTICLE, %s!\n", ps.ByName("article"))
 }
 
 func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
