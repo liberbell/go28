@@ -20,6 +20,7 @@ func main() {
 			log.Println(err)
 			continue
 		}
+		go serve(conn)
 	}
 }
 
