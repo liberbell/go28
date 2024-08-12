@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"log"
 	"net"
 )
@@ -19,11 +20,16 @@ func main() {
 		if err != nil {
 			log.Println(err)
 		}
-		scanner := bufio.NewScanner()
+		scanner := bufio.NewScanner(conn)
 		for scanner.Scan() {
 			ln := scanner.Text()
 			fmt.Println(ln)
 		}
+		defer conn.Close()
+
+		fmt.Println("Code is here")
+		io.WriteString(conn, "I see you connected.")
+		conn.Close()
 	}
 
 }
