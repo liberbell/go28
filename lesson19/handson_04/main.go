@@ -1,6 +1,7 @@
 package main
 
 import (
+	"io"
 	"log"
 	"net"
 )
@@ -15,7 +16,10 @@ func main() {
 	for {
 		conn, err := lis.Accept()
 		if err != nil {
-			log.Fatalln(err)
+			log.Println(err)
+			continue
 		}
+		io.WriteString(conn, "Hello, this is a server")
+		conn.Close()
 	}
 }
