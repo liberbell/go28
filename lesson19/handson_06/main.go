@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"log"
 	"net"
 )
@@ -10,4 +11,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	defer lis.Close()
+
+	scanner := bufio.NewScanner()
 }
