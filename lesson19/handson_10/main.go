@@ -35,5 +35,6 @@ func serve(c net.Conn) {
 			break
 		}
 	}
+	body := "CHECK OUT THE RESPONSE BODY PAYLOAD"
 	io.WriteString(c, "This is the input string func")
 }
