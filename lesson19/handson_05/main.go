@@ -21,7 +21,7 @@ func main() {
 		}
 		io.WriteString(conn, "\nHello from server")
 		fmt.Fprintln(conn, "\nHow is your day")
-		fmt.Fprintf(conn, "%v", "Well, I hope")
+		fmt.Fprintf(conn, "%v", "Well, I hope\n")
 
 		conn.Close()
 	}
