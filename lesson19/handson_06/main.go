@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"net"
 )
@@ -13,5 +14,16 @@ func main() {
 	}
 	defer lis.Close()
 
-	scanner := bufio.NewScanner()
+	for {
+		conn, err := lis.Accept()
+		if err != nil {
+			log.Println(err)
+		}
+		scanner := bufio.NewScanner()
+		for scanner.Scan() {
+			ln := scanner.Text()
+			fmt.Println(ln)
+		}
+	}
+
 }
