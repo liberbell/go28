@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bufio"
+	"fmt"
 	"log"
 	"net"
 )
@@ -17,6 +19,18 @@ func main() {
 		if err != nil {
 			log.Println(err)
 			continue
+		}
+	}
+}
+
+func serve(c net.Conn) {
+	defer c.Close()
+	scanner := bufio.NewScanner(c)
+	for scanner.Scan() {
+		ln := scanner.Text()
+		if ln == "" {
+			fmt.Println("THIS IS THE END OF THE HTTP REQUEST HEADERS")
+			break
 		}
 	}
 }
