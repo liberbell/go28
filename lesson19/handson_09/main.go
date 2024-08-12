@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"log"
 	"net"
 )
@@ -34,4 +35,5 @@ func serve(c net.Conn) {
 			break
 		}
 	}
+	io.WriteString(c, "This is the input string func")
 }
