@@ -10,4 +10,13 @@ func main() {
 	if err != nil {
 		log.Println(err)
 	}
+	defer lis.Close()
+
+	for {
+		conn, err := lis.Accept()
+		if err != nil {
+			log.Println(err)
+			continue
+		}
+	}
 }
