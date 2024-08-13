@@ -36,6 +36,8 @@ func serve(c net.Conn) {
 			xs := strings.Fields(ln)
 			rMethod := xs[0]
 			rURL := xs[1]
+			fmt.Println("Method: ", rMethod)
+			fmt.Println("URL:", rURL)
 		}
 		if ln == "" {
 			fmt.Println("THIS IS THE END OF THE HTTP REQUEST HEADERS")
