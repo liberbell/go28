@@ -3,6 +3,7 @@ package main
 import (
 	"io"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -17,4 +18,8 @@ func dog(w http.ResponseWriter, r *http.Request) {
 	<!--not serving from our server-->
 	<img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg">
 	`)
+}
+
+func dogPic(w http.ResponseWriter, r *http.Request)  {
+	f. err := os.Open("toby.jpg")
 }
