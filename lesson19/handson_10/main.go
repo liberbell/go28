@@ -19,6 +19,7 @@ func main() {
 		conn, err := lis.Accept()
 		if err != nil {
 			log.Println(err)
+			continue
 		}
 		serve(conn)
 	}
