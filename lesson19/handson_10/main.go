@@ -41,5 +41,5 @@ func serve(c net.Conn) {
 	fmt.Fprintf(c, "Content-Length: %d\r\n", len(body))
 	fmt.Fprint(c, "Content-Type: text/plain\r\n")
 	io.WriteString(c, "\r\n")
-	io.WriteString(c, "This is the input string func")
+	io.WriteString(c, body)
 }
