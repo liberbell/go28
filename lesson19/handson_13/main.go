@@ -61,7 +61,7 @@ func serve(c net.Conn) {
 		`
 	io.WriteString(c, "HTTP/1.1 200 OK\r\n")
 	fmt.Fprintf(c, "Content-Length: %d\r\n", len(body))
-	fmt.Fprint(c, "Content-Type: text/plain\r\n")
+	fmt.Fprint(c, "Content-Type: text/html\r\n")
 	io.WriteString(c, "\r\n")
 	io.WriteString(c, body)
 }
