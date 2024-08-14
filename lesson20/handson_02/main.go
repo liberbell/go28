@@ -23,7 +23,13 @@ func dogPic(w http.ResponseWriter, r *http.Request) {
 	f, err := os.Open("toby.jpg")
 	if err != nil {
 		http.Error(w, "file not found", 404)
+		return
 	}
 	defer f.Close()
+
+	fi, err := f.Stat()
+	if err != nil {
+		http.Error(w, "file not found", 404)
+	}
 	io.Copy(w, f)
 }
