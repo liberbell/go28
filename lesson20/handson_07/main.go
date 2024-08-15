@@ -1,7 +1,9 @@
 package main
 
 import (
+	"html/template"
 	"io"
+	"log"
 	"net/http"
 	"os"
 )
@@ -18,8 +20,11 @@ func foo(w http.ResponseWriter, r *http.Request) {
 }
 
 func dog(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	io.WriteString(w, `<img src="/toby.jpg>`)
+	tpl, err := template.ParseFiles("dog.gohtml")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	tpl.ExecuteTemplate(w, "dog.gohtml", nil)
 }
 
 func dogPic(w http.ResponseWriter, r *http.Request) {
