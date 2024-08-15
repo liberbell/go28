@@ -23,9 +23,9 @@ func dog(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	tpl.ExecuteTemplate(w, "dog.gohtml")
+	tpl.ExecuteTemplate(w, "dog.gohtml", nil)
 }
 
 func chien(w http.ResponseWriter, r *http.Request) {
-
+	http.ServeFile(w, r, "dog.jpg")
 }
