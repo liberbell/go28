@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	http.Handlefunc("/", dog)
+	http.HandleFunc("/", dog)
 	http.HandleFunc("/toby.jpg", dogPic)
 	http.ListenAndServe(":8080", nil)
 }
