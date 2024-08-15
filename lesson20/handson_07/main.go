@@ -5,7 +5,6 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"os"
 )
 
 func main() {
@@ -24,21 +23,9 @@ func dog(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	tpl.ExecuteTemplate(w, "dog.gohtml", nil)
+	tpl.ExecuteTemplate(w, "dog.gohtml")
 }
 
-func dogPic(w http.ResponseWriter, r *http.Request) {
-	f, err := os.Open("toby.jpg")
-	if err != nil {
-		http.Error(w, "file not found", http.StatusNotFound)
-		return
-	}
-	defer f.Close()
+func chien(w http.ResponseWriter, r *http.Request) {
 
-	fi, err := f.Stat()
-	if err != nil {
-		http.Error(w, "file not found", 404)
-		return
-	}
-	http.ServeContent(w, r, f.Name(), fi.ModTime(), f)
 }
