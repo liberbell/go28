@@ -12,6 +12,11 @@ func init() {
 	tpl = template.Must(template.ParseFiles("templates/index.gohtml"))
 }
 
+func main() {
+	fs := http.FileServer(http.Dir("public"))
+	http.Handle("/pics", fs)
+}
+
 func dogs(w http.ResponseWriter, r *http.Request) {
 	err := tpl.Execute(w, nil)
 	if err != nil {
