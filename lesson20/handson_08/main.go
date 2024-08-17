@@ -15,6 +15,8 @@ func init() {
 func main() {
 	fs := http.FileServer(http.Dir("public"))
 	http.Handle("/pics", fs)
+	http.HandleFunc("/", dogs)
+	http.ListenAndServe(":8080", nil)
 }
 
 func dogs(w http.ResponseWriter, r *http.Request) {
