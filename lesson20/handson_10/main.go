@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"net/http"
 	"text/template"
 )
@@ -13,14 +12,11 @@ func init() {
 }
 
 func main() {
-	http.HandleFunc("/", dogs)
+	http.HandleFunc("/", index)
 	http.Handle("/resources/", http.StripPrefix("/resources", http.FileServer(http.Dir("."))))
 	http.ListenAndServe(":8080", nil)
 }
 
-func dogs(w http.ResponseWriter, r *http.Request) {
-	err := tpl.Execute(w, nil)
-	if err != nil {
-		log.Fatalln("Template did't execute.: ", err)
-	}
+func index(w http.ResponseWriter, r *http.Request) {
+	tpl.ExecuteTemplate(w, "index.gohtml")
 }
