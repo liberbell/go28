@@ -13,10 +13,10 @@ func init() {
 
 func main() {
 	http.HandleFunc("/", index)
-	http.Handle("/resources/", http.StripPrefix("/resources", http.FileServer(http.Dir("."))))
+	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public"))))
 	http.ListenAndServe(":8080", nil)
 }
 
-func index(w http.ResponseWriter, r *http.Request) {
-	tpl.ExecuteTemplate(w, "index.gohtml")
+func index(w http.ResponseWriter, _ *http.Request) {
+	tpl.ExecuteTemplate(w, "index.gohtml", nil)
 }
