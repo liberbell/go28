@@ -7,6 +7,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", dog)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
 }
 
 func dog(w http.ResponseWriter, r *http.Request) {
