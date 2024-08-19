@@ -16,7 +16,8 @@ func foo(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	io.WriteString(w, `
 	<form method="POST">
-	<input type="text">
-	<input type="submit">
+		<input type="text" name="q">
+		<input type="submit">
+	</form>
 	<br>`+v)
 }
