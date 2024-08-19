@@ -5,6 +5,10 @@ import (
 	"net/http"
 )
 
+func main() {
+	http.HandleFunc("/", foo)
+}
+
 func foo(w http.ResponseWriter, r *http.Request) {
 	v := r.FormValue("q")
 	io.WriteString(w, "do my search: "+v)
