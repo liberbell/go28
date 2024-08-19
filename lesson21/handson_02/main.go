@@ -17,5 +17,6 @@ func foo(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, `
 	<form method="POST">
 	<input type="text">
-	<input type="submit"> +v)
+	<input type="submit">
+	<br>`+v)
 }
