@@ -2,6 +2,7 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -22,5 +23,9 @@ func foo(w http.ResponseWriter, r *http.Request) {
 	l := r.FormValue("last")
 	s := r.FormValue("subscribed") == "on"
 
-	err := tpl.ExecuteTemplate(w, "index.gohtml", person)
+	err := tpl.ExecuteTemplate(w, "index.gohtml", person{f, l, s})
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		log.Fatalln(err)
+	}
 }
