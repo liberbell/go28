@@ -21,4 +21,6 @@ func foo(w http.ResponseWriter, r *http.Request) {
 	f := r.FormValue("first")
 	l := r.FormValue("last")
 	s := r.FormValue("subscribed") == "on"
+
+	err := tpl.ExecuteTemplate(w, "index.gohtml", person)
 }
