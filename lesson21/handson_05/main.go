@@ -36,6 +36,11 @@ func foo(w http.ResponseWriter, r *http.Request) {
 		s = string(bs)
 
 		dst, err := os.Create(filepath.Join("./user", h.Filename))
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		defer dst.Close()
 	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	io.WriteString(w, `
