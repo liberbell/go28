@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -17,5 +18,11 @@ func foo(w http.ResponseWriter, r *http.Request) {
 		defer f.Close()
 
 		fmt.Println("\nfile: ", f, "\nheader: ", h, "\nerr", err)
+
+		bs, err := ioutil.ReadAll(f)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
 	}
 }
