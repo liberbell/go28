@@ -7,6 +7,12 @@ import (
 	"net/http"
 )
 
+func main() {
+	http.HandleFunc("/", foo)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.ListenAndServe(":8080", nil)
+}
+
 func foo(w http.ResponseWriter, r *http.Request) {
 	var s string
 	fmt.Println(r.Method)
