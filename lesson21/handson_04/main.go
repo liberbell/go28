@@ -11,9 +11,11 @@ func foo(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		f, h, err := r.FormFile("q")
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusBadRequest)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 		defer f.Close()
+
+		fmt.Println("\nfile: ", f, "\nheader: ", h, "\nerr", err)
 	}
 }
