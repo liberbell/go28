@@ -41,7 +41,14 @@ func foo(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		defer dst.Close()
+
+		_, err = dst.Write(bs)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
 	}
+
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	io.WriteString(w, `
 	<form method="POST" enctype="multipart/form-data">
