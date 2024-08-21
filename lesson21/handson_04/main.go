@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 )
@@ -24,5 +25,13 @@ func foo(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
+		s = string(bs)
 	}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	io.WriteString(w, `
+	<form method="POST" enctype="multipart/form-data">
+	<input type="file" name="q">
+	<input type="submit">
+	</form>
+	<br>`+s)
 }
