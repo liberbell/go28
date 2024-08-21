@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -57,10 +56,5 @@ func foo(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	io.WriteString(w, `
-	<form method="POST" enctype="multipart/form-data">
-	<input type="file" name="q">
-	<input type="submit">
-	</form>
-	<br>`+s)
+	tpl.ExecuteTemplate(w, "index.gohtml", s)
 }
