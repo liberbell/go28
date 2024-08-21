@@ -11,8 +11,9 @@ func foo(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		f, h, err := r.FormFile("q")
 		if err != nil {
-			http.Error(w, err.Error())
+			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
+		defer f.Close()
 	}
 }
