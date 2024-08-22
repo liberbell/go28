@@ -1,11 +1,8 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
+	"log"
 	"net/http"
-	"os"
-	"path/filepath"
 	"text/template"
 )
 
@@ -28,39 +25,13 @@ func main() {
 }
 
 func foo(w http.ResponseWriter, r *http.Request) {
-	var s string
-	fmt.Println(r.Method)
-	if r.Method == http.MethodPost {
-		f, h, err := r.FormFile("q")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		defer f.Close()
+	bs := make([]byte, r.ContentLength)
+	r.Body.Read(bs)
+	body := string(bs)
 
-		fmt.Println("\nfile: ", f, "\nheader: ", h, "\nerr", err)
-
-		bs, err := ioutil.ReadAll(f)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		s = string(bs)
-
-		dst, err := os.Create(filepath.Join("./user/", h.Filename))
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		defer dst.Close()
-
-		_, err = dst.Write(bs)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
+	err := tpl.ExecuteTemplate(w, "index.gohtml", body)
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		log.Fatalln(err)
 	}
-
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	tpl.ExecuteTemplate(w, "index.gohtml", s)
 }
