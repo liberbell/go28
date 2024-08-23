@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"html/template"
-	"log"
 	"net/http"
 )
 
@@ -26,15 +25,7 @@ func main() {
 }
 
 func foo(w http.ResponseWriter, r *http.Request) {
-	bs := make([]byte, r.ContentLength)
-	r.Body.Read(bs)
-	body := string(bs)
-
-	err := tpl.ExecuteTemplate(w, "index.gohtml", body)
-	if err != nil {
-		http.Error(w, err.Error(), 500)
-		log.Fatalln(err)
-	}
+	fmt.Println("Your request method at foo: ", r.Method)
 }
 
 func bar(w http.ResponseWriter, r *http.Request) {
