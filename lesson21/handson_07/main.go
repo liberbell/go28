@@ -45,4 +45,5 @@ func bar(w http.ResponseWriter, r *http.Request) {
 
 func barred(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("your request method at barred: ", r.Method)
+	tpl.ExecuteTemplate(w, "index.gohtml", nil)
 }
