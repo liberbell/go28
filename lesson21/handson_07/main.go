@@ -20,6 +20,8 @@ type person struct {
 
 func main() {
 	http.HandleFunc("/", foo)
+	http.HandleFunc("/bar", bar)
+	http.HandleFunc("/barred", barred)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":8080", nil)
 }
