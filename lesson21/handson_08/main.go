@@ -11,4 +11,5 @@ func set(w http.ResponseWriter, r *http.Request) {
 		Value: "some value",
 	})
 	fmt.Fprintln(w, "Cookie Written - Check your Browser")
+	fmt.Fprintln(w, "in chrome go to: dev tools / applications / cookies")
 }
