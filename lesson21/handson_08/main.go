@@ -5,6 +5,11 @@ import (
 	"net/http"
 )
 
+func main() {
+	http.HandleFunc("/", set)
+	http.HandleFunc("/read", read)
+}
+
 func set(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &http.Cookie{
 		Name:  "my-cookie",
