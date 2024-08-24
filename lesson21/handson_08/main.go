@@ -8,6 +8,8 @@ import (
 func main() {
 	http.HandleFunc("/", set)
 	http.HandleFunc("/read", read)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.ListenAndServe(":8080", nil)
 }
 
 func set(w http.ResponseWriter, r *http.Request) {
