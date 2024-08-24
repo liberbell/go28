@@ -46,5 +46,8 @@ func read(w http.ResponseWriter, r *http.Request) {
 }
 
 func abandance(w http.ResponseWriter, r *http.Request) {
-
+	http.SetCookie(w, &http.Cookie{
+		Name:  "general",
+		Value: "Some other value",
+	})
 }
