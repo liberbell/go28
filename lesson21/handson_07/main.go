@@ -21,7 +21,7 @@ type person struct {
 func main() {
 	http.HandleFunc("/", foo)
 	http.HandleFunc("/bar", bar)
-	http.HandleFunc("/barred", barred)
+	// http.HandleFunc("/barred", barred)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":8080", nil)
 }
@@ -37,7 +37,7 @@ func bar(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
 
-func barred(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("your request method at barred: ", r.Method)
-	tpl.ExecuteTemplate(w, "index.gohtml", nil)
-}
+// func barred(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Println("your request method at barred: ", r.Method)
+// 	tpl.ExecuteTemplate(w, "index.gohtml", nil)
+// }
