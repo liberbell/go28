@@ -34,8 +34,15 @@ func read(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println(err)
 	} else {
-		fmt.Fprintln(w, "YOUR COOKIE #1: ", c2)
+		fmt.Fprintln(w, "YOUR COOKIE #2: ", c2)
 	}
 
-	fmt.Fprintln(w, "YOUR COOKIE: ", c2)
+	c3, err := r.Cookie("general")
+	if err != nil {
+		log.Println(err)
+	} else {
+		fmt.Fprintln(w, "YOUR COOKIE #3: ", c3)
+	}
+
+	fmt.Fprintln(w, "YOUR COOKIE: ", c3)
 }
