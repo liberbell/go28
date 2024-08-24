@@ -37,12 +37,14 @@ func read(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, "YOUR COOKIE #2: ", c2)
 	}
 
-	c3, err := r.Cookie("general")
+	c3, err := r.Cookie("specific")
 	if err != nil {
 		log.Println(err)
 	} else {
 		fmt.Fprintln(w, "YOUR COOKIE #3: ", c3)
 	}
+}
 
-	fmt.Fprintln(w, "YOUR COOKIE: ", c3)
+func abandance(w http.ResponseWriter, r *http.Request) {
+
 }
