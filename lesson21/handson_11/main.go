@@ -9,6 +9,8 @@ func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/set", set)
 	http.HandleFunc("/read", read)
+	http.HandleFunc("/expire", expire)
+	http.ListenAndServe(":8080", nil)
 }
 func index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, `<h1><a href="/set">set a cookie</a></h1>`)
