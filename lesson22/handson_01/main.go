@@ -1,10 +1,16 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	uuid "github.com/satori/go.uuid"
 )
+
+func main()  {
+	http.HandleFunc("/", foo)
+	http.Handle("/favicon.ico"m http.NotFoundHandler())
+}
 
 func foo(w http.ResponseWriter, r *http.Request) {
 	cookie, err := r.Cookie("session-id")
@@ -17,4 +23,5 @@ func foo(w http.ResponseWriter, r *http.Request) {
 		}
 		http.SetCookie(w, cookie)
 	}
+	fmt.Println(cookie)
 }
