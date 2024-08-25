@@ -2,6 +2,7 @@ package main
 
 import (
 	"io"
+	"log"
 	"net/http"
 	"strconv"
 )
@@ -20,7 +21,10 @@ func foo(res http.ResponseWriter, r *http.Request) {
 			Value: "0",
 		}
 	}
-	count, _ := strconv.Atoi(cookie.Value)
+	count, err := strconv.Atoi(cookie.Value)
+	if err != nil {
+		log.Fatalln(err)
+	}
 	count++
 	cookie.Value = strconv.Itoa(count)
 	http.SetCookie(res, cookie)
