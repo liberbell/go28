@@ -11,7 +11,9 @@ func foo(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		id := uuid.NewV4()
 		cookie = &http.Cookie{
-			Name: "session-id",
+			Name:     "session-id",
+			Value:    id.String(),
+			HttpOnly: true,
 		}
 	}
 }
