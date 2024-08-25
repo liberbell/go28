@@ -28,4 +28,16 @@ func read(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/set", http.StatusSeeOther)
 		return
 	}
+	fmt.Fprintf(w, `<h1>Your Cookie:<br>%v</h1><h1><a href="/expire">expire</a></h1>`, c)
+}
+
+func expire(w http.ResponseWriter, r *http.Request) {
+	c, err := r.Cookie("session")
+	if err != nil {
+		http.Redirect(w, r, "/set", http.StatusSeeOther)
+		return
+	}
+	c.MaxAge = -1
+	http.SetCookie(w, c)
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
