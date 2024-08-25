@@ -16,3 +16,10 @@ func set(w http.ResponseWriter, r *http.Request) {
 	})
 	fmt.Fprintln(w, `<h1><a href="/read">read</a></h1>`)
 }
+
+func read(w http.ResponseWriter, r *http.Request) {
+	c, err := r.Cookie("session")
+	if err != nil {
+		http.Redirect(w, r, "/set", http.StatusSeeOther)
+	}
+}
