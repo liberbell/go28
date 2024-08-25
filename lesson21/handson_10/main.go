@@ -6,6 +6,11 @@ import (
 	"strconv"
 )
 
+func main() {
+	http.HandleFunc("/", foo)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+}
+
 func foo(res http.ResponseWriter, r *http.Request) {
 	cookie, err := r.Cookie("my-cookie")
 	if err == http.ErrNoCookie {
