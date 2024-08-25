@@ -9,7 +9,7 @@ import (
 func main() {
 	http.HandleFunc("/", set)
 	http.HandleFunc("/read", read)
-	http.HandleFunc("/abandance", abandance)
+	http.HandleFunc("/abundance", abundance)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":8080", nil)
 }
@@ -46,7 +46,7 @@ func read(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func abandance(w http.ResponseWriter, r *http.Request) {
+func abundance(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &http.Cookie{
 		Name:  "general",
 		Value: "Some other value about general things",
