@@ -15,5 +15,6 @@ func foo(w http.ResponseWriter, r *http.Request) {
 			Value:    id.String(),
 			HttpOnly: true,
 		}
+		http.SetCookie(w, cookie)
 	}
 }
