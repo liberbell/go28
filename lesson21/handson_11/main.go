@@ -14,4 +14,5 @@ func set(w http.ResponseWriter, r *http.Request) {
 		Name:  "my-cookie",
 		Value: "some value",
 	})
+	fmt.Fprintln(w, `<h1><a href="/read">read</a></h1>`)
 }
