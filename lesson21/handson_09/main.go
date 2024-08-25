@@ -55,5 +55,5 @@ func abandance(w http.ResponseWriter, r *http.Request) {
 		Value: "Some other value about specific things",
 	})
 	fmt.Fprintln(w, "COOKIES WRITTEN - check your cookie")
-	fmt.Fprintln()
+	fmt.Fprintln(w, "in chrome go to : dev tools / application / cookies")
 }
