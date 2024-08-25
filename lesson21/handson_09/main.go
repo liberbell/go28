@@ -9,6 +9,7 @@ import (
 func main() {
 	http.HandleFunc("/", set)
 	http.HandleFunc("/read", read)
+	http.HandleFunc("/abandance", abandance)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":8080", nil)
 }
