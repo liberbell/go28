@@ -18,7 +18,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func set(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &http.Cookie{
-		Name:  "my-cookie",
+		Name:  "session",
 		Value: "some value",
 	})
 	fmt.Fprintln(w, `<h1><a href="/read">read</a></h1>`)
