@@ -48,6 +48,12 @@ func read(w http.ResponseWriter, r *http.Request) {
 func abandance(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &http.Cookie{
 		Name:  "general",
-		Value: "Some other value",
+		Value: "Some other value about general things",
 	})
+	http.SetCookie(w, &http.Cookie{
+		Name:  "specific",
+		Value: "Some other value about specific things",
+	})
+	fmt.Fprintln(w, "COOKIES WRITTEN - check your cookie")
+	fmt.Fprintln()
 }
