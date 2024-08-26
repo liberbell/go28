@@ -25,5 +25,9 @@ func index(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session")
 	if err != nil {
 		sID, _ := uuid.NewV4()
+		c = &http.Cookie{
+			Name:  "session",
+			Value: sID.String(),
+		}
 	}
 }
