@@ -35,4 +35,13 @@ func index(w http.ResponseWriter, r *http.Request) {
 	if un, ok := dbSessions[c.Value]; ok {
 		u = dbUsers[un]
 	}
+
+	if r.Method == http.MethodPost {
+		un := r.FormValue("username")
+		f := r.FormValue("firstname")
+		l := r.FormValue("lastname")
+		u = user{un, f, l}
+		dbSessions[c.Value] = un
+		dbUsers[un] = u
+	}
 }
