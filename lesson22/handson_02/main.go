@@ -1,6 +1,11 @@
 package main
 
-import "text/template"
+import (
+	"net/http"
+	"text/template"
+
+	uuid "github.com/satori/go.uuid"
+)
 
 type user struct {
 	UserName string
@@ -14,4 +19,11 @@ var dbSessions = map[string]string{}
 
 func init() {
 	tpl = template.Must(template.ParseGlob("/templates/*"))
+}
+
+func index(w http.ResponseWriter, r *http.Request) {
+	c, err := r.Cookie("session")
+	if err != nil {
+		sID, _ := uuid.NewV4()
+	}
 }
