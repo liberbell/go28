@@ -29,5 +29,10 @@ func index(w http.ResponseWriter, r *http.Request) {
 			Name:  "session",
 			Value: sID.String(),
 		}
+		http.SetCookie(w, c)
+	}
+	var u user
+	if un, ok := dbSessions[c.Value]; ok {
+		u = dbUsers[un]
 	}
 }
