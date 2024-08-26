@@ -46,3 +46,18 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 	tpl.ExecuteTemplate(w, "index.gohtml", u)
 }
+
+func bar(w http.ResponseWriter, r *http.Request) {
+	c, err := r.Cookie("session")
+	if err != nil {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+	un, ok := dbSessions[c.Value]
+	if !ok {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+	u := dbUsers[un]
+	tpl.ExecuteTemplate(w, "bar.gohtml", u)
+}
