@@ -10,3 +10,8 @@ type user struct {
 
 var tpl *template.Template
 var dbUsers = map[string]user{}
+var dbSessions = map[string]string{}
+
+func init() {
+	tpl = template.Must(template.ParseGlob("/templates/*"))
+}
