@@ -78,5 +78,8 @@ func signup(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == http.MethodPost {
 		un := r.FormValue("username")
+		p := r.FormValue("password")
+		f := r.FormValue("firstname")
+		l := r.FormValue("lastname")
 	}
 }
