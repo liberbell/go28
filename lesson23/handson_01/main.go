@@ -45,10 +45,11 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == http.MethodPost {
+		ps := r.FormValue("password")
 		un := r.FormValue("username")
 		f := r.FormValue("firstname")
 		l := r.FormValue("lastname")
-		u = user{un, f, l}
+		u = user{ps, un, f, l}
 		dbSessions[c.Value] = un
 		dbUsers[un] = u
 	}
