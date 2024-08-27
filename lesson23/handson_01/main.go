@@ -62,3 +62,7 @@ func bar(w http.ResponseWriter, r *http.Request) {
 	u := dbUsers[un]
 	tpl.ExecuteTemplate(w, "bar.gohtml", u)
 }
+
+func signup(w http.ResponseWriter, r *http.Request) {
+
+}
