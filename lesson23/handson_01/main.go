@@ -22,6 +22,10 @@ func init() {
 	tpl = template.Must(template.ParseGlob("templates/*"))
 }
 
+func main() {
+	http.HandleFunc("/", index)
+	http.HandleFunc("/bar", bar)
+}
 func index(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session")
 	if err != nil {
