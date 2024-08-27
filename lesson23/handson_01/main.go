@@ -25,6 +25,8 @@ func init() {
 func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/bar", bar)
+	http.HandleFunc("/signup", signup)
+	http.Handle("favicon.ico", http.NotFoundHandler())
 }
 func index(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session")
