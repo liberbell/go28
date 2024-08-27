@@ -45,11 +45,11 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method == http.MethodPost {
-		ps := r.FormValue("password")
+		p := r.FormValue("password")
 		un := r.FormValue("username")
 		f := r.FormValue("firstname")
 		l := r.FormValue("lastname")
-		u = user{ps, un, f, l}
+		u = user{p, un, f, l}
 		dbSessions[c.Value] = un
 		dbUsers[un] = u
 	}
@@ -74,5 +74,9 @@ func bar(w http.ResponseWriter, r *http.Request) {
 func signup(w http.ResponseWriter, r *http.Request) {
 	if alreadyLoggedIn(r) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
+	}
+
+	if r.Method == http.MethodPost {
+		un := r.FormValue("username")
 	}
 }
