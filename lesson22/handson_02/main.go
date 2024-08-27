@@ -18,7 +18,7 @@ var dbUsers = map[string]user{}
 var dbSessions = map[string]string{}
 
 func init() {
-	tpl = template.Must(template.ParseGlob("/templates/*"))
+	tpl = template.Must(template.ParseGlob("templates/*"))
 }
 
 func main() {
