@@ -13,7 +13,7 @@ func getUser(r *http.Request) user {
 	if un, ok := dbSessions[c.Value]; ok {
 		u = dbUsers[un]
 	}
-	return
+	return u
 }
 
 func alreadyLoggedIn(req *http.Request) bool {
