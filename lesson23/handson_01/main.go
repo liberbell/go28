@@ -29,6 +29,7 @@ func main() {
 	http.Handle("favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":8080", nil)
 }
+
 func index(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session")
 	if err != nil {
@@ -57,18 +58,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 }
 
 func bar(w http.ResponseWriter, r *http.Request) {
-	c, err := r.Cookie("session")
-	if err != nil {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
-		return
-	}
-	un, ok := dbSessions[c.Value]
-	if !ok {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
-		return
-	}
-	u := dbUsers[un]
-	tpl.ExecuteTemplate(w, "bar.gohtml", u)
+	u := getUser(r)
 }
 
 func signup(w http.ResponseWriter, r *http.Request) {
@@ -92,5 +82,14 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			Name:  "session",
 			Value: sID.String(),
 		}
+		http.SetCookie(w, c)
+		dbSessions[c.Value] = un
+
+		u := user{un, p, f, l}
+		dbUsers[un] = u
+
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
 	}
+	tpl.ExecuteTemplate(w, "signup.gohtml", nil)
 }
