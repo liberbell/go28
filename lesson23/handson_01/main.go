@@ -31,34 +31,17 @@ func main() {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	c, err := r.Cookie("session")
-	if err != nil {
-		sID, _ := uuid.NewV4()
-		c = &http.Cookie{
-			Name:  "session",
-			Value: sID.String(),
-		}
-		http.SetCookie(w, c)
-	}
-	var u user
-	if un, ok := dbSessions[c.Value]; ok {
-		u = dbUsers[un]
-	}
-
-	if r.Method == http.MethodPost {
-		p := r.FormValue("password")
-		un := r.FormValue("username")
-		f := r.FormValue("firstname")
-		l := r.FormValue("lastname")
-		u = user{p, un, f, l}
-		dbSessions[c.Value] = un
-		dbUsers[un] = u
-	}
+	u := getUser(r)
 	tpl.ExecuteTemplate(w, "index.gohtml", u)
 }
 
 func bar(w http.ResponseWriter, r *http.Request) {
 	u := getUser(r)
+	if !alreadyLoggedIn() {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+	tpl.ExecuteTemplate(w, "index.gohtml", u)
 }
 
 func signup(w http.ResponseWriter, r *http.Request) {
