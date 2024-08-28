@@ -87,6 +87,10 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		sID := uuid.NewV4()
+		sID, _ := uuid.NewV4()
+		c := &http.Cookie{
+			Name:  "session",
+			Value: sID.String(),
+		}
 	}
 }
