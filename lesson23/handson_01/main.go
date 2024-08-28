@@ -37,7 +37,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func bar(w http.ResponseWriter, r *http.Request) {
 	u := getUser(r)
-	if !alreadyLoggedIn() {
+	if !alreadyLoggedIn(r) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
