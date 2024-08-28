@@ -81,5 +81,12 @@ func signup(w http.ResponseWriter, r *http.Request) {
 		p := r.FormValue("password")
 		f := r.FormValue("firstname")
 		l := r.FormValue("lastname")
+
+		if _, ok := dbUsers[un]; ok {
+			http.Error(w, "Username already taken.", http.StatusForbidden)
+			return
+		}
+
+		sID := uuid.NewV4()
 	}
 }
