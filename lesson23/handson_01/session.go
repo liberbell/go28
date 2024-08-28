@@ -7,7 +7,7 @@ func getUser(r *http.Request) user {
 
 	c, err := r.Cookie("session")
 	if err != nil {
-		retrun u
+		return u
 	}
 
 	if un, ok := dbSessions[c.Value]; ok {
