@@ -71,7 +71,8 @@ func signup(w http.ResponseWriter, r *http.Request) {
 
 		bs, err := bcrypt.GenerateFromPassword([]byte(p), bcrypt.MinCost)
 		if err != nil {
-			http.Error()
+			http.Error(w, "Internal server error", http.StatusInternalServerError)
+			return
 		}
 
 		u := user{un, p, f, l}
