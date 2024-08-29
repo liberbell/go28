@@ -27,12 +27,12 @@ func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/bar", bar)
 	http.HandleFunc("/signup", signup)
-	http.Handle("favicon.ico", http.NotFoundHandler())
+	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":8080", nil)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	u := getUser(r)
+	u := getUser(w, r)
 	tpl.ExecuteTemplate(w, "index.gohtml", u)
 }
 
