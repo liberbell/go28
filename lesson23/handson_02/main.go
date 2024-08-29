@@ -74,6 +74,8 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "Internal server error", http.StatusInternalServerError)
 			return
 		}
+		u = user{un, bs, f, l}
+		dbUsers[un] = u
 
 		u := user{un, p, f, l}
 		dbUsers[un] = u
