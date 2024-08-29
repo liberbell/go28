@@ -48,6 +48,7 @@ func bar(w http.ResponseWriter, r *http.Request) {
 func signup(w http.ResponseWriter, r *http.Request) {
 	if alreadyLoggedIn(r) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
 	}
 
 	if r.Method == http.MethodPost {
@@ -77,11 +78,8 @@ func signup(w http.ResponseWriter, r *http.Request) {
 		u = user{un, bs, f, l}
 		dbUsers[un] = u
 
-		u := user{un, p, f, l}
-		dbUsers[un] = u
-
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
-	tpl.ExecuteTemplate(w, "signup.gohtml", nil)
+	tpl.ExecuteTemplate(w, "signup.gohtml", u)
 }
