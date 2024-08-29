@@ -50,6 +50,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
+	var u user
 
 	if r.Method == http.MethodPost {
 		un := r.FormValue("username")
@@ -75,7 +76,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "Internal server error", http.StatusInternalServerError)
 			return
 		}
-		u := user{un, bs, f, l}
+		u = user{un, bs, f, l}
 		dbUsers[un] = u
 
 		http.Redirect(w, r, "/", http.StatusSeeOther)
