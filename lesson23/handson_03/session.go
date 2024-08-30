@@ -1,14 +1,23 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
 
-func getUser(r *http.Request) user {
-	var u user
+	uuid "github.com/satori/go.uuid"
+)
 
+func getUser(w http.ResponseWriter, r *http.Request) user {
 	c, err := r.Cookie("session")
 	if err != nil {
-		return u
+		sID, _ := uuid.NewV4()
+		c = &http.Cookie{
+			Name:  "session",
+			Value: sID.String(),
+		}
 	}
+	http.SetCookie(w, c)
+
+	var u user
 
 	if un, ok := dbSessions[c.Value]; ok {
 		u = dbUsers[un]

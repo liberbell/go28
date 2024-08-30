@@ -5,11 +5,12 @@ import (
 	"net/http"
 
 	uuid "github.com/satori/go.uuid"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type user struct {
 	UserName string
-	Password string
+	Password []byte
 	First    string
 	Last     string
 }
@@ -20,23 +21,24 @@ var dbSessions = map[string]string{}
 
 func init() {
 	tpl = template.Must(template.ParseGlob("templates/*"))
+	bs, _ := bcrypt.GenerateFromPassword([]byte("password"))
 }
 
 func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/bar", bar)
 	http.HandleFunc("/signup", signup)
-	http.Handle("favicon.ico", http.NotFoundHandler())
+	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":8080", nil)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	u := getUser(r)
+	u := getUser(w, r)
 	tpl.ExecuteTemplate(w, "index.gohtml", u)
 }
 
 func bar(w http.ResponseWriter, r *http.Request) {
-	u := getUser(r)
+	u := getUser(w, r)
 	if !alreadyLoggedIn(r) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
@@ -47,7 +49,9 @@ func bar(w http.ResponseWriter, r *http.Request) {
 func signup(w http.ResponseWriter, r *http.Request) {
 	if alreadyLoggedIn(r) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
 	}
+	var u user
 
 	if r.Method == http.MethodPost {
 		un := r.FormValue("username")
@@ -68,11 +72,16 @@ func signup(w http.ResponseWriter, r *http.Request) {
 		http.SetCookie(w, c)
 		dbSessions[c.Value] = un
 
-		u := user{un, p, f, l}
+		bs, err := bcrypt.GenerateFromPassword([]byte(p), bcrypt.MinCost)
+		if err != nil {
+			http.Error(w, "Internal server error", http.StatusInternalServerError)
+			return
+		}
+		u = user{un, bs, f, l}
 		dbUsers[un] = u
 
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
-	tpl.ExecuteTemplate(w, "signup.gohtml", nil)
+	tpl.ExecuteTemplate(w, "signup.gohtml", u)
 }
