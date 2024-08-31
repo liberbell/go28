@@ -96,8 +96,13 @@ func login(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		un := r.FormValue("username")
 		p := r.FormValue("password")
-		u, ok := dbUsers[un]
+		u, ok = dbUsers[un]
 		if !ok {
+			http.Error(w, "Username and/or password is invalid", http.StatusForbidden)
+			return
+		}
+		err := bcrypt.CompareHashAndPassword(u.Password, []byte(p))
+		if err != nil {
 			http.Error(w, "Username and/or password is invalid", http.StatusForbidden)
 			return
 		}
