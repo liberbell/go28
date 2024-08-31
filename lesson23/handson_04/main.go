@@ -92,4 +92,14 @@ func login(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
+	var u user
+	if r.Method == http.MethodPost {
+		un := r.FormValue("username")
+		p := r.FormValue("password")
+		u, ok := dbUsers[un]
+		if !ok {
+			http.Error(w, "Username and/or password is invalid", http.StatusForbidden)
+			return
+		}
+	}
 }
