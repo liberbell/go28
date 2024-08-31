@@ -96,7 +96,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		un := r.FormValue("username")
 		p := r.FormValue("password")
-		u, ok = dbUsers[un]
+		u, ok := dbUsers[un]
 		if !ok {
 			http.Error(w, "Username and/or password is invalid", http.StatusForbidden)
 			return
@@ -106,5 +106,11 @@ func login(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "Username and/or password is invalid", http.StatusForbidden)
 			return
 		}
+		sID, _ := uuid.NewV4()
+		c := &http.Cookie{
+			Name:  "session",
+			Value: sID.String(),
+		}
+		http.SetCookie(w, c)
 	}
 }
