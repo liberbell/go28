@@ -114,5 +114,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 		http.SetCookie(w, c)
 		dbSessions[c.Value] = un
 		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
 	}
+	tpl.ExecuteTemplate(w, "login.gohtml", nil)
 }
