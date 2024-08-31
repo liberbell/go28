@@ -112,5 +112,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 			Value: sID.String(),
 		}
 		http.SetCookie(w, c)
+		dbSessions[c.Value] = un
+		http.Redirect(w, r, "/", http.StatusSeeOther)
 	}
 }
