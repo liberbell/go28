@@ -26,7 +26,8 @@ var tpl *template.Template
 var dbUsers = map[string]user{}
 var dbSessions = map[string]session{}
 var dbSessionsCleaned time.Time
-const sessionLength int 30
+
+const sessionLength int = 30
 
 func init() {
 	tpl = template.Must(template.ParseGlob("templates/*"))
