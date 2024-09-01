@@ -13,6 +13,7 @@ type user struct {
 	Password []byte
 	First    string
 	Last     string
+	Role     string
 }
 
 var tpl *template.Template
