@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"time"
 
 	uuid "github.com/satori/go.uuid"
 )
@@ -32,7 +33,11 @@ func alreadyLoggedIn(w http.ResponseWriter, r *http.Request) bool {
 	}
 
 	s, ok := dbSessions[c.Value]
-	un := dbSessions[c.Value]
-	_, ok := dbUsers[un]
+	if ok {
+		s.lastActivity = time.Now()
+		dbSessions[c.Value] = s
+	}
+	_, ok = dbUsers[s.un]
+	http.SetCookie(w, c)
 	return ok
 }
