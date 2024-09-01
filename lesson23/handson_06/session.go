@@ -25,11 +25,13 @@ func getUser(w http.ResponseWriter, r *http.Request) user {
 	return u
 }
 
-func alreadyLoggedIn(req *http.Request) bool {
-	c, err := req.Cookie("session")
+func alreadyLoggedIn(w http.ResponseWriter, r *http.Request) bool {
+	c, err := r.Cookie("session")
 	if err != nil {
 		return false
 	}
+
+	s, ok := dbSessions[c.Value]
 	un := dbSessions[c.Value]
 	_, ok := dbUsers[un]
 	return ok
