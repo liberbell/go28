@@ -126,4 +126,12 @@ func logout(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
+	c, _ := r.Cookie("session")
+	delete(dbSessions, c.Value)
+	c = &http.Cookie{
+		Name:   "session",
+		Value:  "",
+		MaxAge: -1,
+	}
+
 }
