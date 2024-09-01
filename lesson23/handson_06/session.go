@@ -21,8 +21,10 @@ func getUser(w http.ResponseWriter, r *http.Request) user {
 
 	var u user
 
-	if un, ok := dbSessions[c.Value]; ok {
-		u = dbUsers[un]
+	if s, ok := dbSessions[c.Value]; ok {
+		s.lastActivity = time.Now()
+		dbSessions[c.Value] = s
+		u = dbUsers[s.un]
 	}
 	return u
 }
