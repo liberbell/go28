@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"time"
 
@@ -44,4 +45,12 @@ func alreadyLoggedIn(w http.ResponseWriter, r *http.Request) bool {
 	c.MaxAge = sessionLength
 	http.SetCookie(w, c)
 	return ok
+}
+
+func cleanSessions()  {
+	fmt.Println("Before clean")
+	showSessions()
+	for k, v := range dbSessions {
+		if time.Now().Sub(v.lastActivity) > (time.Second * 30)
+	}
 }
