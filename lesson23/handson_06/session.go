@@ -47,10 +47,15 @@ func alreadyLoggedIn(w http.ResponseWriter, r *http.Request) bool {
 	return ok
 }
 
-func cleanSessions()  {
+func cleanSessions() {
 	fmt.Println("Before clean")
 	showSessions()
 	for k, v := range dbSessions {
-		if time.Now().Sub(v.lastActivity) > (time.Second * 30)
+		if time.Now().Sub(v.lastActivity) > (time.Second * 30) {
+			delete(dbSessions, k)
+		}
 	}
+	dbSessionsCleaned = time.Now()
+	fmt.Println("After clean")
+	showSessions()
 }
