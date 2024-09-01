@@ -63,6 +63,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 		p := r.FormValue("password")
 		f := r.FormValue("firstname")
 		l := r.FormValue("lastname")
+		ro := r.FormValue("role")
 
 		if _, ok := dbUsers[un]; ok {
 			http.Error(w, "Username already taken.", http.StatusForbidden)
@@ -82,7 +83,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "Internal server error", http.StatusInternalServerError)
 			return
 		}
-		u = user{un, bs, f, l}
+		u = user{un, bs, f, l, ro}
 		dbUsers[un] = u
 
 		http.Redirect(w, r, "/", http.StatusSeeOther)
