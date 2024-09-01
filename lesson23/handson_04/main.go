@@ -21,6 +21,7 @@ var dbSessions = map[string]string{}
 
 func init() {
 	tpl = template.Must(template.ParseGlob("templates/*"))
+	// bs, _ := bcrypt.GenerateFromPassword([]byte("password"), bcrypt.MinCost)
 	bs, _ := bcrypt.GenerateFromPassword([]byte("password"), bcrypt.MinCost)
 	dbUsers["test@test.com"] = user{"test@test.com", bs, "James", "Bond"}
 }
@@ -117,5 +118,5 @@ func login(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
-	tpl.ExecuteTemplate(w, "login.gohtml", nil)
+	tpl.ExecuteTemplate(w, "login.gohtml", u)
 }
