@@ -48,6 +48,11 @@ func bar(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
+	if u.Role != "007" {
+		http.Error(w, "You must be 007 to enter the bar", http.StatusForbidden)
+		return
+	}
+
 	tpl.ExecuteTemplate(w, "bar.gohtml", u)
 }
 
