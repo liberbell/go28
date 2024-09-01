@@ -16,6 +16,7 @@ func getUser(w http.ResponseWriter, r *http.Request) user {
 			Value: sID.String(),
 		}
 	}
+	c.MaxAge = sessionLength
 	http.SetCookie(w, c)
 
 	var u user
@@ -38,6 +39,7 @@ func alreadyLoggedIn(w http.ResponseWriter, r *http.Request) bool {
 		dbSessions[c.Value] = s
 	}
 	_, ok = dbUsers[s.un]
+	c.MaxAge = sessionLength
 	http.SetCookie(w, c)
 	return ok
 }
