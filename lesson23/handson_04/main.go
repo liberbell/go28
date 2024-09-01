@@ -120,3 +120,10 @@ func login(w http.ResponseWriter, r *http.Request) {
 	}
 	tpl.ExecuteTemplate(w, "login.gohtml", nil)
 }
+
+func logout(w http.ResponseWriter, r *http.Request) {
+	if !alreadyLoggedIn(r) {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+}
