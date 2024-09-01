@@ -101,6 +101,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
+	showSessions()
 	tpl.ExecuteTemplate(w, "signup.gohtml", u)
 }
 
