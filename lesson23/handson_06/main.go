@@ -51,7 +51,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func bar(w http.ResponseWriter, r *http.Request) {
 	u := getUser(w, r)
-	if !alreadyLoggedIn(r) {
+	if !alreadyLoggedIn(w, r) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
@@ -64,7 +64,7 @@ func bar(w http.ResponseWriter, r *http.Request) {
 }
 
 func signup(w http.ResponseWriter, r *http.Request) {
-	if alreadyLoggedIn(r) {
+	if alreadyLoggedIn(w, r) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
@@ -107,7 +107,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 }
 
 func login(w http.ResponseWriter, r *http.Request) {
-	if alreadyLoggedIn(r) {
+	if alreadyLoggedIn(w, r) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
@@ -130,12 +130,13 @@ func login(w http.ResponseWriter, r *http.Request) {
 			Name:  "session",
 			Value: sID.String(),
 		}
+		c.MaxAge = sessionLength
 		http.SetCookie(w, c)
-		dbSessions[c.Value] = un
+		dbSessions[c.Value] = session{un, time.Now()}
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
-	tpl.ExecuteTemplate(w, "login.gohtml", nil)
+	tpl.ExecuteTemplate(w, "login.gohtml", u)
 }
 
 func logout(w http.ResponseWriter, r *http.Request) {
