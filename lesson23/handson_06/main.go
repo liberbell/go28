@@ -30,6 +30,7 @@ const sessionLength int 30
 
 func init() {
 	tpl = template.Must(template.ParseGlob("templates/*"))
+	dbSessionsCleaned = time.Now()
 }
 
 func main() {
@@ -85,8 +86,9 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			Name:  "session",
 			Value: sID.String(),
 		}
+		c.MaxAge = sessionLength
 		http.SetCookie(w, c)
-		dbSessions[c.Value] = un
+		dbSessions[c.Value] = session{un, time.Now()}
 
 		bs, err := bcrypt.GenerateFromPassword([]byte(p), bcrypt.MinCost)
 		if err != nil {
