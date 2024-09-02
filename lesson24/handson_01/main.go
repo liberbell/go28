@@ -20,7 +20,8 @@ func main() {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	tpl.ExecuteTemplate(w, "index.gohtml", nil)
+	c := getCookie(w, r)
+	tpl.ExecuteTemplate(w, "index.gohtml", c.Value)
 }
 
 func getCookie(w http.ResponseWriter, r *http.Request) *http.Cookie {
