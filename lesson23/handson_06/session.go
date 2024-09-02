@@ -59,3 +59,11 @@ func cleanSessions() {
 	fmt.Println("After clean")
 	showSessions()
 }
+
+func showSessions() {
+	fmt.Println("--------------------")
+	for k, v := range dbSessions {
+		fmt.Println(k, v)
+	}
+	fmt.Println("")
+}
