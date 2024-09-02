@@ -111,6 +111,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
+	var u user
 
 	if r.Method == http.MethodPost {
 		un := r.FormValue("username")
@@ -136,11 +137,12 @@ func login(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
+	showSessions()
 	tpl.ExecuteTemplate(w, "login.gohtml", u)
 }
 
 func logout(w http.ResponseWriter, r *http.Request) {
-	if !alreadyLoggedIn(r) {
+	if !alreadyLoggedIn(w, r) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
@@ -152,7 +154,7 @@ func logout(w http.ResponseWriter, r *http.Request) {
 		MaxAge: -1,
 	}
 	http.SetCookie(w, c)
-	if time.Now().Sub(dbSessionsCleaned) > (time.second * 30) {
+	if time.Now().Sub(dbSessionsCleaned) > (time.Second * 30) {
 		go cleanSessions()
 	}
 
