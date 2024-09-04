@@ -1,10 +1,13 @@
 package main
 
 import (
+	"crypto/sha1"
 	"fmt"
 	"html/template"
+	"io"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 
 	uuid "github.com/satori/go.uuid"
@@ -30,12 +33,16 @@ func index(w http.ResponseWriter, r *http.Request) {
 			fmt.Println(err)
 		}
 		defer mf.Close()
-
 		ext := strings.Split(fh.Filename, ".")[1]
+		h := sha1.New()
+		io.Copy(h, mf)
+		fname := fmt.Sprintf("%x", h.Sum(nil)) + "." + ext
+
 		wd, err := os.Getwd()
 		if err != nil {
 			fmt.Println(err)
 		}
+		path := filepath.Join(wd)
 	}
 	c = appendValue(w, c)
 	xs := strings.Split(c.Value, "|")
