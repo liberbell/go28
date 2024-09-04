@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 	"strings"
@@ -22,6 +23,12 @@ func main() {
 
 func index(w http.ResponseWriter, r *http.Request) {
 	c := getCookie(w, r)
+	if r.Method == http.MethodPost {
+		mf, fh, err := r.FormFile("nf")
+		if err != nil {
+			fmt.Println(err)
+		}
+	}
 	c = appendValue(w, c)
 	xs := strings.Split(c.Value, "|")
 	tpl.ExecuteTemplate(w, "index.gohtml", xs)
