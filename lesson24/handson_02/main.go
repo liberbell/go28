@@ -43,6 +43,16 @@ func index(w http.ResponseWriter, r *http.Request) {
 			fmt.Println(err)
 		}
 		path := filepath.Join(wd, "public", "pics", fname)
+		nf, err := os.Create(path)
+		if err != nil {
+			fmt.Println(err)
+		}
+		defer nf.Close()
+
+		mf.Seek(0, 0)
+		io.Copy(nf, mf)
+
+		c = appendValue(w, c, fname)
 	}
 	c = appendValue(w, c)
 	xs := strings.Split(c.Value, "|")
@@ -62,7 +72,7 @@ func getCookie(w http.ResponseWriter, r *http.Request) *http.Cookie {
 	return c
 }
 
-func appendValue(w http.ResponseWriter, c *http.Cookie) *http.Cookie {
+func appendValue(w http.ResponseWriter, c *http.Cookie, fname string) *http.Cookie {
 	p1 := "disneyland.jpg"
 	p2 := "atbeach.jpg"
 	p3 := "hollywood.jpg"
