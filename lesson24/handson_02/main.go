@@ -54,7 +54,6 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 		c = appendValue(w, c, fname)
 	}
-	c = appendValue(w, c)
 	xs := strings.Split(c.Value, "|")
 	tpl.ExecuteTemplate(w, "index.gohtml", xs)
 }
