@@ -42,7 +42,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			fmt.Println(err)
 		}
-		path := filepath.Join(wd)
+		path := filepath.Join(wd, "public", "pics", fname)
 	}
 	c = appendValue(w, c)
 	xs := strings.Split(c.Value, "|")
