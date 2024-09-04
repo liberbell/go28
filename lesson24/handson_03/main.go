@@ -56,7 +56,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 		c = appendValue(w, c, fname)
 	}
 	xs := strings.Split(c.Value, "|")
-	tpl.ExecuteTemplate(w, "index.gohtml", xs)
+	tpl.ExecuteTemplate(w, "index.gohtml", xs[1:])
 }
 
 func getCookie(w http.ResponseWriter, r *http.Request) *http.Cookie {
