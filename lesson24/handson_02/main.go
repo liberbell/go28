@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"os"
 	"strings"
 
 	uuid "github.com/satori/go.uuid"
@@ -25,6 +26,13 @@ func index(w http.ResponseWriter, r *http.Request) {
 	c := getCookie(w, r)
 	if r.Method == http.MethodPost {
 		mf, fh, err := r.FormFile("nf")
+		if err != nil {
+			fmt.Println(err)
+		}
+		defer mf.Close()
+
+		ext := strings.Split(fh.Filename, ".")[1]
+		wd, err := os.Getwd()
 		if err != nil {
 			fmt.Println(err)
 		}
