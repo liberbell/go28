@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/base64"
 	"fmt"
+	"log"
 )
 
 func main() {
@@ -15,4 +16,10 @@ func main() {
 	fmt.Println(len(s64))
 	fmt.Println(s)
 	fmt.Println(s64)
+
+	bs, err := base64.StdEncoding.DecodeString(s64)
+	if err != nil {
+		log.Fatalln("i`m giving her all she`s got Captain", err)
+	}
+	fmt.Println(string(bs))
 }
