@@ -11,7 +11,7 @@ func main() {
 	c := getCode("test@example.com")
 	fmt.Println(c)
 	c = getCode("tes@example.com")
-
+	fmt.Println(c)
 }
 
 func getCode(s string) string {
