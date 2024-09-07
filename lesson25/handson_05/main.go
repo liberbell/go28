@@ -7,6 +7,11 @@ import (
 	"net/http"
 )
 
+func main() {
+	http.HandleFunc("/", foo)
+	http.HandleFunc("/bar", bar)
+}
+
 func foo(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	ctx = context.WithValue(ctx, "userID", 007)
