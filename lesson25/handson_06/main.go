@@ -29,8 +29,16 @@ func dbAcces(ctx context.Context) (int, error) {
 	defer cancel()
 
 	ch := make(chan, int)
-	uid := ctx.Value("userID").(int)
-	return uid
+	go func ()  {
+		uid := ctx.Value("userID").(int)
+		time.Sleep(time.Second * 2)
+
+		if ctx.Err() != nil {
+			return
+		}
+		return uid
+	}
+	
 }
 
 func bar(w http.ResponseWriter, r *http.Request) {
