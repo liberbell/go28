@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -23,7 +24,11 @@ func foo(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, result)
 }
 
-func dbAcces(ctx context.Context) int {
+func dbAcces(ctx context.Context) (int, error) {
+	ctx, cancel := context.WithTimeout(ctx, time.Second * 1)
+	defer cancel()
+
+	ch := make(chan, int)
 	uid := ctx.Value("userID").(int)
 	return uid
 }
