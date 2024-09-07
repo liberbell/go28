@@ -20,11 +20,15 @@ func foo(w http.ResponseWriter, r *http.Request) {
 	ctx = context.WithValue(ctx, "userID", 777)
 	ctx = context.WithValue(ctx, "fname", "James")
 
-	result := dbAcces(ctx)
+	result, err := dbAccess(ctx)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusRequestTimeout)
+		return
+	}
 	fmt.Fprintln(w, result)
 }
 
-func dbAcces(ctx context.Context) (int, error) {
+func dbAccess(ctx context.Context) (int, error) {
 	ctx, cancel := context.WithTimeout(ctx, time.Second * 1)
 	defer cancel()
 
@@ -49,6 +53,7 @@ func dbAcces(ctx context.Context) (int, error) {
 
 func bar(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
+
 	log.Println(ctx)
 	fmt.Fprintln(w, ctx)
 }
