@@ -29,6 +29,7 @@ func dbAcces(ctx context.Context) (int, error) {
 	defer cancel()
 
 	ch := make(chan, int)
+	
 	go func ()  {
 		uid := ctx.Value("userID").(int)
 		time.Sleep(time.Second * 2)
@@ -36,8 +37,8 @@ func dbAcces(ctx context.Context) (int, error) {
 		if ctx.Err() != nil {
 			return
 		}
-		return uid
-	}
+		ch <- uid
+	}()
 	
 }
 
