@@ -16,7 +16,7 @@ func main() {
 
 func foo(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
-	ctx = context.WithValue(ctx, "userID", 007)
+	ctx = context.WithValue(ctx, "userID", 777)
 	ctx = context.WithValue(ctx, "fname", "James")
 
 	result := dbAcces(ctx)
