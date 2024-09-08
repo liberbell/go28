@@ -12,7 +12,14 @@ type person struct {
 	Items []string
 }
 
-func bar(w http.ResponseWriter, r *http.Request) {
+func main() {
+	http.HandleFunc("/", foo)
+	http.HandleFunc("/mshl", mshl)
+	http.HandleFunc("/encd", encd)
+	http.Handle("/favicon.iso", http.NotFoundHandler())
+}
+
+func foo(w http.ResponseWriter, r *http.Request) {
 	s := `<!DOCTYPE html>
 	      <head>
 		  	<meta charset="utf-8">
@@ -47,7 +54,7 @@ func encd(w http.ResponseWriter, r *http.Request) {
 		"Bond",
 		[]string{"Suite", "Gun", "Wry sense of humor"},
 	}
-	err := json.NewEncoder().Encode(p1)
+	err := json.NewEncoder(w).Encode(p1)
 	if err != nil {
 		log.Println(err)
 	}
