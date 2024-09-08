@@ -4,6 +4,11 @@ import (
 	"context"
 )
 
+func main() {
+	ctx, channel := context.WithCancel(context.Background())
+	defer channel()
+}
+
 func gen(ctx context.Context) <-chan int {
 	ch := make(chan int)
 	go func() {
