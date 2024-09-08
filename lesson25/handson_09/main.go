@@ -21,3 +21,12 @@ func bar(w http.ResponseWriter, r *http.Request) {
 		  `
 	w.Write([]byte(s))
 }
+
+func encd(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	p1 := person{
+		"James",
+		"Bond",
+		[]string{"Suite", "Gun", "Wry sense of humor"},
+	}
+}
