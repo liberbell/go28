@@ -1,6 +1,10 @@
 package main
 
-import "net/http"
+import (
+	"encoding/json"
+	"log"
+	"net/http"
+)
 
 type person struct {
 	Fname string
@@ -22,11 +26,16 @@ func bar(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(s))
 }
 
-func encd(w http.ResponseWriter, r *http.Request) {
+func mshl(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	p1 := person{
 		"James",
 		"Bond",
 		[]string{"Suite", "Gun", "Wry sense of humor"},
 	}
+	json, err := json.Marshal(p1)
+	if err != nil {
+		log.Println(err)
+	}
+	w.Write(json)
 }
