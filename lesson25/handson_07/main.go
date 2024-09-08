@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	for n := range gen() {
@@ -9,6 +12,7 @@ func main() {
 			break
 		}
 	}
+	time.Sleep(time.Minute * 1)
 }
 
 func gen() <-chan int {
