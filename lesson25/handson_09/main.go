@@ -17,6 +17,7 @@ func main() {
 	http.HandleFunc("/mshl", mshl)
 	http.HandleFunc("/encd", encd)
 	http.Handle("/favicon.iso", http.NotFoundHandler())
+	http.ListenAndServe(":8080", nil)
 }
 
 func foo(w http.ResponseWriter, r *http.Request) {
