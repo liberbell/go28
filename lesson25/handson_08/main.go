@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"time"
 )
 
 func main() {
@@ -13,8 +14,10 @@ func main() {
 		fmt.Println(n)
 		if n == 5 {
 			cancel()
+			break
 		}
 	}
+	time.Sleep(time.Minute * 1)
 }
 
 func gen(ctx context.Context) <-chan int {
