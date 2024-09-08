@@ -2,11 +2,19 @@ package main
 
 import (
 	"context"
+	"fmt"
 )
 
 func main() {
-	ctx, channel := context.WithCancel(context.Background())
-	defer channel()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	for n := range gen(ctx) {
+		fmt.Println(n)
+		if n == 5 {
+			cancel()
+		}
+	}
 }
 
 func gen(ctx context.Context) <-chan int {
