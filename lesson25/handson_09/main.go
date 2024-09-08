@@ -37,9 +37,9 @@ func foo(w http.ResponseWriter, r *http.Request) {
 func mshl(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	p1 := person{
-		"James",
-		"Bond",
-		[]string{"Suite", "Gun", "Wry sense of humor"},
+		Fname: "James",
+		Lname: "Bond",
+		Items: []string{"Suite", "Gun", "Wry sense of humor"},
 	}
 	json, err := json.Marshal(p1)
 	if err != nil {
