@@ -13,5 +13,8 @@ func bar(w http.ResponseWriter, r *http.Request) {
 	      <head>
 		  <meta charset="utf-8">
 		  <title>F00</title>
+		  </head>
+		  <body>
+		  <h1>You are at foo</h1>
 		  `
 }
