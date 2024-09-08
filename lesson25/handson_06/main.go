@@ -29,12 +29,12 @@ func foo(w http.ResponseWriter, r *http.Request) {
 }
 
 func dbAccess(ctx context.Context) (int, error) {
-	ctx, cancel := context.WithTimeout(ctx, time.Second * 1)
+	ctx, cancel := context.WithTimeout(ctx, time.Second*1)
 	defer cancel()
 
-	ch := make(chan, int)
+	ch := make(chan int)
 
-	go func ()  {
+	go func() {
 		uid := ctx.Value("userID").(int)
 		time.Sleep(time.Second * 2)
 
