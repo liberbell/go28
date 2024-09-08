@@ -11,10 +11,13 @@ type person struct {
 func bar(w http.ResponseWriter, r *http.Request) {
 	s := `<!DOCTYPE html>
 	      <head>
-		  <meta charset="utf-8">
-		  <title>F00</title>
+		  	<meta charset="utf-8">
+		  	<title>F00</title>
 		  </head>
 		  <body>
-		  <h1>You are at foo</h1>
+		  	<h1>You are at foo</h1>
+		  </body>
+		  </html>
 		  `
+	w.Write([]byte(s))
 }
