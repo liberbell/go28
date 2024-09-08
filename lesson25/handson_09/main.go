@@ -39,3 +39,16 @@ func mshl(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write(json)
 }
+
+func encd(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	p1 := person{
+		"James",
+		"Bond",
+		[]string{"Suite", "Gun", "Wry sense of humor"},
+	}
+	err := json.NewEncoder().Encode(p1)
+	if err != nil {
+		log.Println(err)
+	}
+}
