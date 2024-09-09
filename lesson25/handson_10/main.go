@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 )
 
@@ -26,4 +27,5 @@ func main() {
 	if err != nil {
 		log.Fatalln("error unmarshalling", err)
 	}
+	fmt.Println(data)
 }
