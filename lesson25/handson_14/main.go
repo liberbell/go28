@@ -16,4 +16,5 @@ func main() {
 	if err != nil {
 		fmt.Println("error: ", err)
 	}
+	fmt.Println(string(bs))
 }
