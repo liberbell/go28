@@ -12,6 +12,8 @@ type model struct {
 
 func main() {
 	m := model{}
+	fmt.Println(m)
+
 	bs, err := json.Marshal(m)
 	if err != nil {
 		fmt.Println("error: ", err)
