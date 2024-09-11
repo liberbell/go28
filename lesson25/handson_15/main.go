@@ -1,5 +1,10 @@
 package main
 
+import (
+	"encoding/json"
+	"log"
+)
+
 type model struct {
 	state    bool
 	pictures []string
@@ -13,5 +18,10 @@ func main() {
 			"two.jpg",
 			"three.jpg",
 		},
+	}
+
+	bs, err := json.Marshal(m)
+	if err != nil {
+		log.Println("error: ", err)
 	}
 }
