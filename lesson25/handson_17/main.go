@@ -7,8 +7,8 @@ import (
 )
 
 type code struct {
-	Code        int
-	Description string
+	Code    int
+	Descrip string
 }
 
 func main() {
@@ -22,6 +22,6 @@ func main() {
 	}
 
 	for _, v := range data {
-		fmt.Println(v.Code, "-", v.Description)
+		fmt.Println(v.Code, "-", v.Descrip)
 	}
 }
