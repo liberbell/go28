@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 )
 
@@ -18,5 +19,9 @@ func main() {
 	err := json.Unmarshal([]byte(rcvd), &data)
 	if err != nil {
 		log.Fatalln(err)
+	}
+
+	for _, v := range data {
+		fmt.Println(v.Code, "-", v.Description)
 	}
 }
