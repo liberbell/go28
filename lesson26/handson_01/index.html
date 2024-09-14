@@ -29,7 +29,8 @@
                     if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                         alert(xhr.responseText);
                     }
-                }
+                };
+                xhr.send();
             }
         </script>
     </body>
