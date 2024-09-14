@@ -22,10 +22,10 @@
 
         <script>
             document.querySelector("h1").onclick = makeRequest;
-            
-            function makeRequest(url) {
+
+            function makeRequest() {
                 var xhr = new XMLHttpRequest();
-                xhr.open("GET", "test.html", true);
+                xhr.open("GET", "test.html");
 
                 xhr.onreadystatechange = function () {
                     if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
