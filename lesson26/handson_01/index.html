@@ -24,6 +24,10 @@
             function makeRequest(url) {
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "test.html", true);
+
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === XMLHttpRequest.DONE)
+                }
             }
         </script>
     </body>
