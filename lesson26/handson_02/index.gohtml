@@ -13,8 +13,10 @@
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "/foo", true);
                 xhr.onreadystatechange = function() { 
-                    if(xhr.readyState === XMLHttpRequest.DONE &)
-                }
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+                        alert(xhr.responseText);
+                    }
+                };
             }
         </script>
     </body>
