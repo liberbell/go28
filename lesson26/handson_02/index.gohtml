@@ -10,7 +10,11 @@
             document.querySelector("span").onclick = makeRequest;
 
             function makeRequest(url) {
-                var xhr
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "/foo", true);
+                xhr.onreadystatechange = function() { 
+                    if(xhr.readyState === XMLHttpRequest.DONE &)
+                }
             }
         </script>
     </body>
