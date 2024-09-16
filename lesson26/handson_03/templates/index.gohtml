@@ -24,6 +24,11 @@
             document.querySelector("span").onclick = makeRequest;
             function makeRequest(url) {
                 var xhr = new XMLHttpRequest();
+                xhr.open("GET", "/foo", true);
+
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    var b =
+                }
             }
         </script>
     </body>
