@@ -12,6 +12,12 @@ func init() {
 	tpl = template.Must(template.ParseGlob("templates/*"))
 }
 
+func main() {
+	http.HandleFunc("/", index)
+	http.HandleFunc("/foo", foo)
+
+}
+
 func index(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "index.gohtml", nil)
 }
