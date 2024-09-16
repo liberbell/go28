@@ -30,6 +30,8 @@
                     var b = document.querySelector("body");
                     var myHeadingOne = document.createElement("h1");
                     var myHeadingOneText = document.createTextNode(xhr.responseText);
+                    myHeadingOne.appendChild(myHeadingOneText);
+                    b.appendChild(myHeadingOne);
                 }
             }
         </script>
