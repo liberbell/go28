@@ -7,6 +7,7 @@
             body {
                 height: 100vh;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
             }
@@ -21,7 +22,7 @@
         <h1>Make Something Happened</h1>
 
         <script>
-            document.querySelector("span").onclick = makeRequest;
+            document.querySelector("h1").onclick = makeRequest;
             function makeRequest(url) {
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "/foo", true);
