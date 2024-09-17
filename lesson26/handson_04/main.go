@@ -125,7 +125,7 @@ func login(w http.ResponseWriter, req *http.Request) {
 			http.Error(w, "Username and/or password do not match", http.StatusForbidden)
 			return
 		}
-		// create session
+
 		sID, _ := uuid.NewV4()
 		c := &http.Cookie{
 			Name:  "session",
@@ -137,7 +137,7 @@ func login(w http.ResponseWriter, req *http.Request) {
 		http.Redirect(w, req, "/", http.StatusSeeOther)
 		return
 	}
-	showSessions() // for demonstration purposes
+	showSessions()
 	tpl.ExecuteTemplate(w, "login.gohtml", u)
 }
 
@@ -147,9 +147,7 @@ func logout(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	c, _ := req.Cookie("session")
-	// delete the session
 	delete(dbSessions, c.Value)
-	// remove the cookie
 	c = &http.Cookie{
 		Name:   "session",
 		Value:  "",
@@ -157,7 +155,6 @@ func logout(w http.ResponseWriter, req *http.Request) {
 	}
 	http.SetCookie(w, c)
 
-	// clean up dbSessions
 	if time.Now().Sub(dbSessionsCleaned) > (time.Second * 30) {
 		go cleanSessions()
 	}
