@@ -10,6 +10,7 @@ import (
 func main() {
 	r := httprouter.New()
 	r.GET("/", index)
+	http.ListenAndServe(":8080", nil)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
