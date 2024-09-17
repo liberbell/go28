@@ -59,7 +59,6 @@ func cleanSessions() {
 	showSessions()
 }
 
-// for demonstration purposes
 func showSessions() {
 	fmt.Println("********")
 	for k, v := range dbSessions {
