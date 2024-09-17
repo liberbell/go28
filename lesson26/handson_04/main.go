@@ -42,7 +42,6 @@ func main() {
 	http.HandleFunc("/signup", signup)
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/logout", logout)
-	// added new route
 	http.HandleFunc("/checkUserName", checkUserName)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":8080", nil)
@@ -50,7 +49,7 @@ func main() {
 
 func index(w http.ResponseWriter, req *http.Request) {
 	u := getUser(w, req)
-	showSessions() // for demonstration purposes
+	showSessions()
 	tpl.ExecuteTemplate(w, "index.gohtml", u)
 }
 
