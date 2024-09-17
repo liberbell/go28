@@ -24,6 +24,6 @@ func index(w http.ResponseWriter, r *http.Request) {
 }
 
 func foo(w http.ResponseWriter, r *http.Request) {
-	s := `<h1>Here is some text from foo`
+	s := `Here is some text from foo`
 	fmt.Fprintln(w, s)
 }
