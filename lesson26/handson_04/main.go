@@ -63,7 +63,7 @@ func bar(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, "You must be 007 to enter the bar", http.StatusForbidden)
 		return
 	}
-	showSessions() // for demonstration purposes
+	showSessions()
 	tpl.ExecuteTemplate(w, "bar.gohtml", u)
 }
 
@@ -73,20 +73,16 @@ func signup(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	var u user
-	// process form submission
 	if req.Method == http.MethodPost {
-		// get form values
 		un := req.FormValue("username")
 		p := req.FormValue("password")
 		f := req.FormValue("firstname")
 		l := req.FormValue("lastname")
 		r := req.FormValue("role")
-		// username taken?
 		if _, ok := dbUsers[un]; ok {
 			http.Error(w, "Username already taken", http.StatusForbidden)
 			return
 		}
-		// create session
 		sID, _ := uuid.NewV4()
 		c := &http.Cookie{
 			Name:  "session",
