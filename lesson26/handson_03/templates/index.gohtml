@@ -28,7 +28,7 @@
                 xhr.open("GET", "/foo", true);
 
                 xhr.onreadystatechange = function() {
-                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                     var b = document.querySelector("body");
                     var myHeadingOne = document.createElement("h1");
                     var myHeadingOneText = document.createTextNode(xhr.responseText);
