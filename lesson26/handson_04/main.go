@@ -91,7 +91,6 @@ func signup(w http.ResponseWriter, req *http.Request) {
 		c.MaxAge = sessionLength
 		http.SetCookie(w, c)
 		dbSessions[c.Value] = session{un, time.Now()}
-		// store user in dbUsers
 		bs, err := bcrypt.GenerateFromPassword([]byte(p), bcrypt.MinCost)
 		if err != nil {
 			http.Error(w, "Internal server error", http.StatusInternalServerError)
@@ -99,11 +98,10 @@ func signup(w http.ResponseWriter, req *http.Request) {
 		}
 		u = user{un, bs, f, l, r}
 		dbUsers[un] = u
-		// redirect
 		http.Redirect(w, req, "/", http.StatusSeeOther)
 		return
 	}
-	showSessions() // for demonstration purposes
+	showSessions()
 	tpl.ExecuteTemplate(w, "signup.gohtml", u)
 }
 
@@ -113,17 +111,15 @@ func login(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	var u user
-	// process form submission
 	if req.Method == http.MethodPost {
 		un := req.FormValue("username")
 		p := req.FormValue("password")
-		// is there a username?
 		u, ok := dbUsers[un]
 		if !ok {
 			http.Error(w, "Username and/or password do not match", http.StatusForbidden)
 			return
 		}
-		// does the entered password match the stored password?
+
 		err := bcrypt.CompareHashAndPassword(u.Password, []byte(p))
 		if err != nil {
 			http.Error(w, "Username and/or password do not match", http.StatusForbidden)
