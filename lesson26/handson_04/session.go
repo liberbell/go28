@@ -41,23 +41,22 @@ func alreadyLoggedIn(w http.ResponseWriter, req *http.Request) bool {
 		dbSessions[c.Value] = s
 	}
 	_, ok = dbUsers[s.un]
-	// refresh session
 	c.MaxAge = sessionLength
 	http.SetCookie(w, c)
 	return ok
 }
 
 func cleanSessions() {
-	fmt.Println("BEFORE CLEAN") // for demonstration purposes
-	showSessions()              // for demonstration purposes
+	fmt.Println("BEFORE CLEAN")
+	showSessions()
 	for k, v := range dbSessions {
 		if time.Now().Sub(v.lastActivity) > (time.Second * 30) {
 			delete(dbSessions, k)
 		}
 	}
 	dbSessionsCleaned = time.Now()
-	fmt.Println("AFTER CLEAN") // for demonstration purposes
-	showSessions()             // for demonstration purposes
+	fmt.Println("AFTER CLEAN")
+	showSessions()
 }
 
 // for demonstration purposes
