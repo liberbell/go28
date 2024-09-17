@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"html/template"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"time"
 
@@ -169,7 +169,7 @@ func checkUserName(w http.ResponseWriter, req *http.Request) {
 		"moneyp@uk.gov":    true,
 	}
 
-	bs, err := ioutil.ReadAll(req.Body)
+	bs, err := io.ReadAll(req.Body)
 	if err != nil {
 		fmt.Println(err)
 	}
