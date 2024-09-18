@@ -19,5 +19,9 @@ func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	</html>`
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(s))
+}
 
+func getUser(w http.ResponseWriter, r *http.Request, p httprouter.Params)  {
+	u := 
 }
