@@ -3,8 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"models"
 	"net/http"
-	"todos/apps/models"
 
 	"github.com/julienschmidt/httprouter"
 )
