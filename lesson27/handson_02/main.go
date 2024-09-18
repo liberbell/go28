@@ -17,4 +17,7 @@ func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	<a href="/user/111222">Go to: http://localhost:8080/user/111222</a>
 	</body>
 	</html>`
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.WriteHeader(http.StatusOK)
+
 }
