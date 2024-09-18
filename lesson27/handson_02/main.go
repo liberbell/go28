@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"todos/apps/models"
 
 	"github.com/julienschmidt/httprouter"
 )
@@ -22,6 +23,11 @@ func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	w.Write([]byte(s))
 }
 
-func getUser(w http.ResponseWriter, r *http.Request, p httprouter.Params)  {
-	u := 
+func getUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	u := models.User{
+		Name:   "James Bond",
+		Gender: "male",
+		Age:    32,
+		Id:     p.ByName("id"),
+	}
 }
