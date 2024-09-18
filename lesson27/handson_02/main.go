@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"net/http"
 	"todos/apps/models"
 
@@ -30,4 +31,7 @@ func getUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		Age:    32,
 		Id:     p.ByName("id"),
 	}
+
+	uj, _ := json.Marshal(u)
+	w.Header().Set("Content-Type", "application/json")
 }
