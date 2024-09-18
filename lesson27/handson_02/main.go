@@ -14,5 +14,7 @@ func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	<title>Index</title>
 	</head>
 	<body>
-	<a href="`
+	<a href="/user/111222">Go to: http://localhost:8080/user/111222</a>
+	</body>
+	</html>`
 }
