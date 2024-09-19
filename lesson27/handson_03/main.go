@@ -43,4 +43,6 @@ func createUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	u := models.User{}
 
 	json.NewDecoder(r.Body).Decode(&u)
+	u.Id = "007"
+	uj, _ := json.Marshal(u)
 }
