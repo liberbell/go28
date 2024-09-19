@@ -41,4 +41,6 @@ func getUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 
 func createUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	u := models.User{}
+
+	json.NewDecoder(r.Body).Decode(&u)
 }
