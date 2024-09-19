@@ -1,8 +1,8 @@
 package main
 
 import (
+	"go28/lesson27/handson_03/models"
 	"net/http"
-	"pj79/apps/models"
 
 	"github.com/julienschmidt/httprouter"
 )
