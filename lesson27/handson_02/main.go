@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"models"
+	"go28/lesson27/handson_02/models"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
