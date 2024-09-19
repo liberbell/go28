@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
 	"go28/lesson27/handson_03/models"
 	"net/http"
 
@@ -31,4 +33,12 @@ func getUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		Age:    32,
 		Id:     p.ByName("id"),
 	}
+
+	uj, _ := json.Marshal(u)
+	w.Header().Set("Content-Type", "application/json")
+	fmt.Fprintf(w, "%s\n", uj)
+}
+
+func createUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	u := models.User{}
 }
