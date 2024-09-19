@@ -9,6 +9,11 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
+func main() {
+	r := httprouter.New()
+	r.GET("/", index)
+}
+
 func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	s := `<!DOCTYPE html>
 	<html lang="en">
