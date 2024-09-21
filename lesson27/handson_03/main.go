@@ -14,6 +14,8 @@ func main() {
 	r.GET("/", index)
 	r.GET("/user/:id", getUser)
 	r.POST("/user", createUser)
+	r.DELETE("/user/:id", deleteUser)
+	http.ListenAndServe(":8080", r)
 }
 
 func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
