@@ -36,4 +36,7 @@ func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, p ht
 	json.NewDecoder(r.Body).Decode(&u)
 	u.Id = "007"
 	uj, _ := json.Marshal(u)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	fmt.Fprintf(w, "%s\n", uj)
 }
