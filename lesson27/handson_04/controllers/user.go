@@ -29,3 +29,11 @@ func (uc UserController) GetUser(w http.ResponseWriter, r *http.Request, p httpr
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "%s\n", uj)
 }
+
+func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	u := models.User{}
+
+	json.NewDecoder(r.Body).Decode(&u)
+	u.Id = "007"
+	uj, _ := json.Marshal(u)
+}
