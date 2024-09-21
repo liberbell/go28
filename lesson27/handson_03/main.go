@@ -12,6 +12,8 @@ import (
 func main() {
 	r := httprouter.New()
 	r.GET("/", index)
+	r.GET("/user/:id", getUser)
+	r.POST("/user", createUser)
 }
 
 func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
