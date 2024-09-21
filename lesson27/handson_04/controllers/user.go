@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"go28/lesson27/handson_04/models"
@@ -21,4 +23,9 @@ func (uc UserController) GetUser(w http.ResponseWriter, r *http.Request, p httpr
 		Age:    45,
 		Id:     p.ByName("id"),
 	}
+
+	uj, _ := json.Marshal(u)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "%s\n", uj)
 }
