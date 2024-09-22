@@ -13,7 +13,9 @@ import (
 type UserController struct{}
 
 func NewUserController() *UserController {
-	return &UserController{}
+	return &UserController{
+		session *mgo.Session
+	}
 }
 
 func (uc UserController) GetUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
