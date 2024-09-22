@@ -21,7 +21,7 @@ func getSession() *mgo.Session {
 	access_url := "mongodb+srv://<go_user>:<go_userpassword>@cluster0.4zuzwrb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0}"
 	s, err := mgo.Dial(access_url)
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
 
 }
