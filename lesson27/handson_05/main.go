@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go28/lesson27/handson_04/controllers"
+	"go28/lesson27/handson_05/controllers"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
