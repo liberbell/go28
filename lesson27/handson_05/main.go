@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"go28/lesson27/handson_05/controllers"
 	"log"
 	"net/http"
@@ -24,6 +25,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("Connected to MongoDB!")
 
 	uc := controllers.NewUserController(getSession())
 	r.GET("/user/:id", uc.GetUser)
