@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"go28/lesson27/handson_04/models"
+	"go28/lesson27/handson_05/models"
 
 	"github.com/julienschmidt/httprouter"
 )
