@@ -8,14 +8,15 @@ import (
 	"go28/lesson27/handson_05/models"
 
 	"github.com/julienschmidt/httprouter"
+	"gopkg.in/mgo.v2"
 )
 
-type UserController struct{}
+type UserController struct {
+	session *mgo.Session
+}
 
-func NewUserController() *UserController {
-	return &UserController{
-		session *mgo.Session
-	}
+func NewUserController(s *mgo.Session) *UserController {
+	return &UserController{s}
 }
 
 func (uc UserController) GetUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
