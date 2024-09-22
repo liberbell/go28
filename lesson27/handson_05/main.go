@@ -10,7 +10,7 @@ import (
 
 func main() {
 	r := httprouter.New()
-	uc := controllers.NewUserController()
+	uc := controllers.NewUserController(getSession())
 	r.GET("/user/:id", uc.GetUser)
 	r.POST("/user", uc.CreateUser)
 	r.DELETE("/user/:id", uc.DeleteUser)
@@ -23,5 +23,5 @@ func getSession() *mgo.Session {
 	if err != nil {
 		panic(err)
 	}
-
+	return s
 }
