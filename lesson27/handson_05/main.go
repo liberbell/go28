@@ -20,6 +20,11 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	err = client.Ping(context.TODO(), nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	uc := controllers.NewUserController(getSession())
 	r.GET("/user/:id", uc.GetUser)
 	r.POST("/user", uc.CreateUser)
