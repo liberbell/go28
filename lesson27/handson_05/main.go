@@ -26,6 +26,7 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println("Connected to MongoDB!")
+	collection := client.Database("testdb").Collection("testcollection")
 
 	uc := controllers.NewUserController(getSession())
 	r.GET("/user/:id", uc.GetUser)
