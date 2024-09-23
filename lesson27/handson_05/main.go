@@ -11,6 +11,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 )
 
 func main() {
@@ -27,6 +28,19 @@ func main() {
 	}
 	fmt.Println("Connected to MongoDB!")
 	collection := client.Database("testdb").Collection("testcollection")
+
+	newDocument := bson.D{
+		{Key: "name", Value: "John Doe"},
+		{Key: "age", Value: 30},
+		{Key: "city", Value: "San Francisco"},
+	}
+
+	insertResult, err := collection.InsertOne(context.TODO(), newDocument)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("Inserted a single document: ", insertResult.InsertedID)
 
 	uc := controllers.NewUserController(getSession())
 	r.GET("/user/:id", uc.GetUser)
