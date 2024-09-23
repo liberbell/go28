@@ -42,6 +42,16 @@ func main() {
 
 	fmt.Println("Inserted a single document: ", insertResult.InsertedID)
 
+	var result bson.D
+	filter := bson.D{{Key: "name", Value: "John Doe"}}
+
+	err = collection.FindOne(context.TODO(), filter).Decode(&result)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("Found a single document: ", result)
+
 	uc := controllers.NewUserController(getSession())
 	r.GET("/user/:id", uc.GetUser)
 	r.POST("/user", uc.CreateUser)
